@@ -1,123 +1,94 @@
-# Through the Woods
+# Through the Woods: Move Forward to a Healthier You
+blurb
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+      <a href="#summary">Summary</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#installation">Installation</a>
     </li>
-    <li><a href="#code-snippet">Code-Snippet</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#collaborators">Collaborators</a></li>
-    <li><a href="#project-links">Project Links</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li>
+      <a href="#code-snippet">Code-Snippets</a>
+    </li>
+    <li>
+      <a href="#license">License</a>
+    </li>
+    <li>
+      <a href="#collaborators">Collaborators</a>
+    </li>
+    <li>
+      <a href="#acknowledgements">Acknowledgements</a>
+    </li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Summary
+some text or functionality list goes here (translate user stories?)
 
-<img src="./public/assets/images/webpage.png" alt="investomania Webpage">
+[Visit the the deployed Through the Woods aplication.](https://through-the-woods.herokuapp.com/)
 
-For this project, we decided on creating a pre production crowdfunding application that would allow users to see what kind of support they would recieve before crowdfunnding their project/application. Other users can back or donate to support the project of their likings. It tested all of our previous knowledge and we were constantly researching to ensure we had the best product we could deliver to the user!
+placeholders:
 
-The websites we used to help create our project are listed below in the <a href="#acknowledgements">acknowledgements</a>.
+### Home
+![Image of something](./whateverpath.png)
 
-### Built With
+### User Dashboard
+![Gif of something](./whateverpath.png)
 
-We used <a href="https://code.visualstudio.com/">Visual Studio Code</a> to create the Handlebars, CSS and Javascript from scratch. We had the help of Bootstrap for formatting the Handlebars and Node.js to help with the coding on the Javascript!
+### Therapist Search
+![Image of something](./whateverpath.png)
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+## Installation
+Ensure you have Node.js installed locally to install packages to and from the public npm registry. Node.js installation documentation.
 
-When loading this webpage, you are greeted with several projects from other users. To click on a project, you must be logged in first or sign up. When logging in or signing up, you will greeted to the dashboard where the user can create a new project or view previous projects.
+1. Clone the repository to your local machine.
 
+2. Install application dependencies `npm install`.
+Required when when you first set up the project for local development or use OR if any changes are made to the project's dependencies. More Node information here.
+
+3. Start the application with `npm run develop`. This will open the app in a new tab in your default web browser. 
+
+<!-- Technologies -->
+## Built With
+* [Mongo DB](https://www.mongodb.com/) - The NoSQL database used to support record storage.
+* [React](https://reactjs.org/) - Javascript library used to generate all user interfaces.
+* [Node](https://nodejs.org/en/) - Asynchronous event-driven JavaScript runtime environment that executes JavaScript code outside a web browser
+* [NPM](https://www.npmjs.com/) - Node package manager, used in conjunction with JS and Inquirer to support application logic and Command Line interface.
+  * [GraphQL](https://www.npmjs.com/package/graphql) - JavaScript reference implementation for GraphQL, a query language for APIs.
+  * [@Apollo-client](https://www.npmjs.com/package/@apollo/client) - Enables UI components that fetch data via GraphQL.
+  * [Apollo-server-express](https://www.npmjs.com/package/apollo-server-express) - Express integration of Apollo Server, an open-source GraphQL server that works with many Node.js HTTP server frameworks.
+  * [Mongoose](https://www.npmjs.com/package/mongoose) - Mongoose is a MongoDB object modeling tool used for all models in this application.
+  * [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+  * [Expressjs](https://expressjs.com/) - Leveraged for API's, utility methods, and middleware.
+  * [Bcrypt](https://www.npmjs.com/package/bcrypt) - Used for password hashing.
+  * [React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/) - Bootstrap CSS framework for React projects.
+* [CSS](https://devdocs.io/css/) - Custom application styling.
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - Core app logic
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - Used to create elements on the DOM.
+
+* [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview) - Data for search engine
 
 <!-- USAGE EXAMPLES -->
 ## Code Snippets
+Code snippets and explanation
 
-We had to create a function where the user could pick a day when to end their crowdfunding campaign. When they chose a day, it needs to be formatted then saved with the rest of the project details.
-
-Below is the first part of the function that when a user selects a date, it will get the value and convert it into a formatted date that can be stringified.
-```
-var field = document.getElementById('project-datepicker');
-var picker = new Pikaday({
-    onSelect: function(date) {
-        field.value = picker.toString();
-        console.log(date.toLocaleDateString());
-        
-    }
-});
-field.parentNode.insertBefore(picker.el, field.nextSibling);
-```
-<br>
-
-For some reason, we had trouble creating a post method that would gather the users inputted data from creating a project and stringify them into JSON format. After some debugging, we created a new function that would create a post method.
-
-Below is grabbing all the values from the data input and stringifying it into JSON format and storing it session storage.
-
-```
-const saveProject = (event) => {
-  event.preventDefault();
-  let projects = {
-    title: projectTitle.value.trim(),
-    description: projectDesc.value.trim(),
-    image: projectImg.value.trim(),
-    contributor: projectCont.value.trim(),
-    date_picker: projectDate.value.trim(),
-    backing: projectBacking
-  }
-  fetch('/api/projects', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify(projects)
-  })
-};
-```
-
-
-<!-- LICENSE -->
 ## License
+* Licensed under the [MIT](https://opensource.org/licenses/MIT) license. See `LICENSE` for more information.
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
 ## Collaborators
-Sami Khawja: [GitHub](https://github.com/samikhawja)
+|**Sami Khawja** | **Alix Friedman** | **Sarah Hollingsworth** |
+|-----------------|---------------|------------------|
+| - [Portfolio](https://samikhawja.github.io/portfolio_page/)| - [Portfolio](https://alix1713.github.io/Alix/)| - [Portfolio](https://sahhollingsworth.github.io/portfolio-react/) |
+| - [Github](https://github.com/samikhawja)| - [Github](https://github.com/Alix1713) | - [Github](https://github.com/sahhollingsworth) |
+| - [LinkedIn](https://www.linkedin.com/in/samikhawja/)| - [LinkedIn](https://www.linkedin.com/in/alix1713/) | - [LinkedIn](https://www.linkedin.com/in/sarahhollingsworth/)|
 
-Sarah Hollingsworth: [GitHub](https://github.com/sahhollingsworth)
-
-Alix Friedman: [GitHub](https://github.com/Alix1713)
-
-
-## Project Links
-Project Link: [GitHub](https://github.com/samikhawja/project_three)
-
-Live Link: [investomania](https://investomaniap2.herokuapp.com/)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [W3Schools](https://www.w3schools.com/)
-* [StackOverflow](https://stackoverflow.com/)
-* [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Bootstrap](https://get.foundation)
-* [PikADay](https://jquery.com/)
-* [Handlebars](https://kanye.rest/)
-* [Node.js](https://funtranslations.com/api/)
-* [Express.js](https://funtranslations.com/api/)
-* [npm](https://funtranslations.com/api/)
-* [MySql](https://funtranslations.com/api/)
+* 
