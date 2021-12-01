@@ -1,4 +1,4 @@
-# Project Three
+# Through the Woods
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
