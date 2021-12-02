@@ -14,6 +14,10 @@ const journalSchema = new Schema({
         trim: true,
         maxlength: 1000,
     },
+    sentiment: {
+        type: String,
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
