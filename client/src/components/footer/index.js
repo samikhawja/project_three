@@ -46,7 +46,7 @@ const Footer = () => {
 };
 
 export default Footer;
-
+//Alix's Notes
 //index.js in footer folder
 //needs styling
 //need to test colors out?
