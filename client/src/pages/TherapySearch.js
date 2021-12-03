@@ -64,7 +64,7 @@ function TherapySearch() {
     // }
     return (
       <div>
-          <h1>HOME page placeholder</h1>
+          <h1>TherapySearch page placeholder</h1>
       </div>
   );
 }
