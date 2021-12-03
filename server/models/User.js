@@ -63,7 +63,7 @@ const userSchema = new Schema({
             // group location depending on api
         }
     ],
-    journals: [
+    journal: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Journal',
