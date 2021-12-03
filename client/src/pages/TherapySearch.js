@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+require('dotenv').config();
+
+console.log(process.env);
 
 function TherapySearch() {
     const [error, setError] = useState(null);
@@ -6,18 +9,19 @@ function TherapySearch() {
     const [items, setItems] = useState([]);
     
     useEffect(() => {
-      fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY")
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setItems(result);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
+        const api_key = process.env.API_KEY;
+        fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=${api_key}`)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                setIsLoaded(true);
+                setItems(result);
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+            )
     }, [])
   
     if (error) {
