@@ -1,4 +1,6 @@
-function journalModal(props) {
+import React from "react";
+
+function JournalModal(props) {
   return (
     <Modal
       {...props}
@@ -22,24 +24,7 @@ function journalModal(props) {
   );
 }
 
-function App() {
-  const [modalShow, setModalShow] = React.useState(false);
-
-  return (
-    <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Button Text
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </>
-  );
-}
-
-render(<App />);
+export default JournalModal;
 
 //Alix's notes
 // modal from https://react-bootstrap.github.io/components/modal/

@@ -1,6 +1,6 @@
 import React from "react";
 
-const journalForm = () => {
+const JournalForm = () => {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="entryTitle">
@@ -30,7 +30,7 @@ const journalForm = () => {
   );
 };
 
-export default journalForm;
+export default JournalForm;
 //Alix's notes
 //needs styling
 // submitEntry needs to do something
