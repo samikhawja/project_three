@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 
 const journalSchema = new Schema({
+    author: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     title: {
         type: String,
         required: true,

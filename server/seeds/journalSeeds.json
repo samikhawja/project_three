@@ -1,0 +1,23 @@
+[
+    {
+        "author": "Sami Khawja",
+        "title": "Title1",
+        "body": "Body1",
+        "sentiment": "A",
+        "createdAt": "1"
+    },
+    {
+        "author": "Alix Friedman",
+        "title": "Title2",
+        "body": "Body2",
+        "sentiment": "B",
+        "createdAt": "2"
+    },
+    {
+        "author": "Sarah Hollingsworth",
+        "title": "Title3",
+        "body": "Body3",
+        "sentiment": "C",
+        "createdAt": "3"
+    }
+]
