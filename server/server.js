@@ -5,8 +5,10 @@ const { ApolloServer } = require('apollo-server-express');
 
 // Graphql schema bundle with definition and functions responsible for populating data in the schema
 const { typeDefs, resolvers } = require('.schemas');
-
-const { authMiddleware } = require('.utils/auth');
+// COMMENTED OUT UNTIL authMiddleware util created, same for line 31-21
+// // Import authentication middle 
+// const { authMiddleware } = require('.utils/auth');
+// Mongoose connection to MongoDB database instance
 const db = require('./config/connection');
 
 const app = express();
@@ -26,8 +28,8 @@ async function startApolloServer(typeDefs, resolvers) {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        // So data from the `authMiddleware()` function can pass data to resolver functions
-        context: authMiddleware,
+        // // So data from the `authMiddleware()` function can pass data to resolver functions
+        // context: authMiddleware,
     });
 
     // Ensures that Apollo Server has successfully loaded its configuration before you start listening for HTTP requests. Req for apollo-server-express v3+
