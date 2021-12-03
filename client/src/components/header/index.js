@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// COMMENTED OUT until auth is set up, same line 12 & 30
+// import Auth from "../../utils/auth";
 
-import Auth from "../../utils/auth";
 const myStyle = {
   color: "403F48",
   backgroundColor: "#95A792",
 };
+
 const Header = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+  // COMMENTED OUT until auth is set up
+  // const logout = (event) => {
+  //   event.preventDefault();
+  //   Auth.logout();
+  // };
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div
@@ -23,7 +26,9 @@ const Header = () => {
           </Link>
           <p className="m-0">A path forward to a healthier you</p>
         </div>
-        <div>
+
+        {/* COMMENTED OUT until auth is set up, */}
+        {/* <div>
           {Auth.loggedIn() ? (
             <>
               <Link className="btn btn-lg btn-info m-2" to="/me">
@@ -43,7 +48,7 @@ const Header = () => {
               </Link>
             </>
           )}
-        </div>
+        </div> */}
       </div>
     </header>
   );
