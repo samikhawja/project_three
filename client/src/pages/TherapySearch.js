@@ -3,7 +3,7 @@ require('dotenv').config();
 
 console.log(process.env);
 
-function Therapy() {
+function TherapySearch() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -41,4 +41,4 @@ function Therapy() {
     }
 }
 
-export default Therapy();
+export default TherapySearch();

@@ -24,8 +24,9 @@ const Footer = () => {
           <h3>
             {" "}
             If you are in a life threatening situation - don’t use this site.
-            Call +1 (800) 273-8255 or use these {resources} to get immediate
-            help.
+            {/* TEMP COMMENTED OUT to avoid error until we define resources 
+            Call +1 (800) 273-8255 or use these { resources } to get immediate
+            help. */}
           </h3>
           <h4>
             Made with{" "}
