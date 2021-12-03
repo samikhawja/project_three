@@ -1,75 +1,76 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        match: [/.+@.+\..+/, 'Invalid email address format'],
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 8,
-    },
-    fname: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-    },
-    lname: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    provider: [
-        {
-            // make an id for provider?
-            fname: {
-                type: String,
-                required: true,
-                unique: true,
-                trim: true,
-            },
-            lname: {
-                type: String,
-                required: true,
-                unique: true,
-                trim: true,
-            },
-            phone: {
-                type: Number,
-                required: true,
-                unique: true,
-            }
-        }
-    ],
-    group: [
-        {
-            // make an id for group?
-            groupName: {
-                type: String,
-                required: true,
-                unique: true,
-                trim: true,
-            },
-            // group location depending on api
-        }
-    ],
-    journal: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Journal',
+// import Journal schema
+const journalSchema = require('./Journal');
+
+const userSchema = new Schema(
+    {
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: [/.+@.+\..+/, 'Invalid email address format'],
         },
-    ],
-});
+        password: {
+            type: String,
+            required: true,
+            minlength: 8,
+        },
+        fname: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+        },
+        lname: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        },
+        provider: [
+            {
+                // make an id for provider?
+                fname: {
+                    type: String,
+                    required: true,
+                    unique: true,
+                    trim: true,
+                },
+                lname: {
+                    type: String,
+                    required: true,
+                    unique: true,
+                    trim: true,
+                },
+                phone: {
+                    type: Number,
+                    required: true,
+                    unique: true,
+                }
+            }
+        ],
+        group: [
+            {
+                // make an id for group?
+                groupName: {
+                    type: String,
+                    required: true,
+                    unique: true,
+                    trim: true,
+                },
+                // group location depending on api
+            }
+        ],
+        //set journals to be an array of data that adheres to the journalSchema
+        journals: [journalSchema],
+    },
+);
 
 userSchema.pre('save', async function (done) {
     if (this.isNew || this.isModified('password')) {
