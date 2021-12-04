@@ -7,14 +7,10 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import TherapySearch from './pages/TherapySearch';
 import UserDashboard from './pages/UserDashboard';
-import Setting from './pages/Setting';
-import Journal from './pages/Journal';
-import Calendar from './pages/Calendar';
 
 // Import Header & Footer components, they are part of the UI while on any app page
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+import Header from './components/Header/index';
+import Footer from './components/Footer/index';
 
 
 // Establish GraphQL API endpoint
@@ -50,15 +46,11 @@ function App() {
       <Router>
         <div>
           <Header />
-          <Nav />
           <Switch>
             {/* Default app page */}
             <Route exact path='/' component = { Home } />
             <Route exact path='/therapy' component = { TherapySearch } />
             <Route exact path='/dashboard' component = { UserDashboard } />
-            <Route exact path='/setting' component = { Setting } />
-            <Route exact path='/journal' component = { Journal } />
-            <Route exact path='/calendar' component = { Calendar } />
           </Switch>
           <Footer />
         </div>

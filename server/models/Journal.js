@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 // import moment from 'moment';
 
@@ -28,6 +28,4 @@ const journalSchema = new Schema(
     { timestamps : true },
 );
 
-const Journal = model('Journal', journalSchema);
-
-module.exports = Journal;
+module.exports = journalSchema;

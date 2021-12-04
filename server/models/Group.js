@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 // Mongoose automatically creates ids for subdocument arrays objects
 
@@ -20,6 +20,4 @@ const groupSchema = new Schema({
     }
 });
 
-const Group = model('Group', groupSchema);
-
-module.exports = Group;
+module.exports = groupSchema;

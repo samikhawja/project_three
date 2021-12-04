@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 // Mongoose automatically creates ids for subdocument arrays objects
 
@@ -20,6 +20,4 @@ const providerSchema = new Schema({
     }
 });
 
-const Provider = model('Provider', providerSchema);
-
-module.exports = Provider;
+module.exports = providerSchema;
