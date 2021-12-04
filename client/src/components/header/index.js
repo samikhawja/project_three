@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 // COMMENTED OUT until auth is set up, same line 12 & 30
 // import Auth from "../../utils/auth";
 
