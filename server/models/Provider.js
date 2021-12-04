@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 // subdocument schema - used as the schema for the `providers` array in the User Schema
 const providerSchema = new Schema({
@@ -16,6 +16,4 @@ const providerSchema = new Schema({
     }
 });
 
-const Provider = model('Provider', providerSchema);
-
-module.exports = Provider;
+module.exports = providerSchema;

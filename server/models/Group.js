@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 // subdocument schema - used as the schema for the `groups` array in the User Schema
 const groupSchema = new Schema({
@@ -16,6 +16,4 @@ const groupSchema = new Schema({
     }
 });
 
-const Group = model('Group', groupSchema);
-
-module.exports = Group;
+module.exports = groupSchema;
