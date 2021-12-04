@@ -18,7 +18,7 @@ module.exports = {
         } 
         
         try {
-        // retrieve user information from tokan
+        // retrieve user information from token
         const { data } = jwt.verify(token, secret, { maxAge: expiration });
         req.user = data;
         } catch {
@@ -26,8 +26,8 @@ module.exports = {
         } 
         return req;
     },
-    signToken: function ({ firstName, email, _id }) {
-        const payload = { firstName, email, _id };
+    signToken: function ({ email, _id }) {
+        const payload = { email, _id };
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
 };
