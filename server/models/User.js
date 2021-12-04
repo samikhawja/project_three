@@ -1,8 +1,10 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import Journal schema
+// import relevant schemas
 const journalSchema = require('./Journal');
+const groupSchema = require('./Group');
+const providerSchema = require('./Provider');
 
 const userSchema = new Schema(
     {
@@ -20,53 +22,22 @@ const userSchema = new Schema(
         fname: {
             type: String,
             required: true,
-            unique: true,
             trim: true,
         },
         lname: {
             type: String,
             required: true,
-            unique: true,
             trim: true,
         },
         createdAt: {
             type: Date,
             default: Date.now,
         },
-        provider: [
-            {
-                // make an id for provider?
-                fname: {
-                    type: String,
-                    required: true,
-                    unique: true,
-                    trim: true,
-                },
-                lname: {
-                    type: String,
-                    required: true,
-                    unique: true,
-                    trim: true,
-                },
-                phone: {
-                    type: Number,
-                    required: true,
-                }
-            }
-        ],
-        group: [
-            {
-                // make an id for group?
-                groupName: {
-                    type: String,
-                    required: true,
-                    unique: true,
-                    trim: true,
-                },
-                // group location depending on api
-            }
-        ],
-        //set journals to be an array of data that adheres to the journalSchema
+        //providers is an array of data that adheres to the providerSchema
+        provider: [providerSchema],
+        //groups is an array of data that adheres to the groupSchema
+        groups: [groupSchema],
+        //journals is an array of data that adheres to the journalSchema
         journals: [journalSchema],
     },
 );
