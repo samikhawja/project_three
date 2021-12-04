@@ -4,14 +4,14 @@ const path = require('path')
 const { ApolloServer } = require('apollo-server-express');
 
 // Graphql schema bundle with definition and functions responsible for populating data in the schema
-const { typeDefs, resolvers } = require('.schemas');
+const { typeDefs, resolvers } = require('./schemas');
 // Import authentication middle 
-const { authMiddleware } = require('.utils/auth');
+const { authMiddleware } = require('./utils/auth');
 // Mongoose connection to MongoDB database instance
 const db = require('./config/connection');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Parse incoming requests with urlencoded payloads and return as objects
 app.use(express.urlencoded({ extended: true }))
@@ -35,10 +35,7 @@ async function startApolloServer(typeDefs, resolvers) {
     await server.start();
 
     // integrate Express.js with the Apollo Server and connect the schema. Enables app to use GraphQL
-    server.applyMiddleware({ 
-        app, 
-        path: '/' 
-    });
+    server.applyMiddleware({ app });
 
     await new Promise(resolve =>
         db.once('open', () => {

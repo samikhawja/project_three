@@ -29,17 +29,15 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-        },
         //providers is an array of data that adheres to the providerSchema
         provider: [providerSchema],
         //groups is an array of data that adheres to the groupSchema
         groups: [groupSchema],
         //journals is an array of data that adheres to the journalSchema
-        journals: [journalSchema],
+        journals: [journalSchema]
     },
+    // tells Mongoose to automatically manage createdAt and updatedAt properties
+    { timestamps : true },
 );
 
 userSchema.pre('save', async function (done) {
