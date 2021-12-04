@@ -27,6 +27,20 @@ const JournalForm = () => {
               Today's a good day
             </Form.Control.Feedback>
           </Form.Check>
+          <Form.Check type={ambivalent} id={`check-api-${ambivalent}`}>
+            <Form.Check.Input type={ambivalent} isValid />
+            <Form.Check.Label>{`Ambivalent ${ambivalent}`}</Form.Check.Label>
+            <Form.Control.Feedback type="valid">
+              Today's I'm just okay
+            </Form.Control.Feedback>
+          </Form.Check>
+          <Form.Check type={sad} id={`check-api-${sad}`}>
+            <Form.Check.Input type={sad} isValid />d
+            <Form.Check.Label>{`Sad ${sad}`}</Form.Check.Label>
+            <Form.Control.Feedback type="valid">
+              Its okay to have a bad day
+            </Form.Control.Feedback>
+          </Form.Check>
         </div>
       ))}
       <Button variant="primary" type="submitEntry">
