@@ -21,17 +21,21 @@ const History = () => {
         <Col sm={4}>
           <ListGroup>
             <ListGroup.Item action href="#link1">
-              Link 1
+              entryTitle
             </ListGroup.Item>
             <ListGroup.Item action href="#link2">
-              Link 2
+              entryTitle
             </ListGroup.Item>
           </ListGroup>
         </Col>
         <Col sm={8}>
           <Tab.Content>
-            <Tab.Pane eventKey="#link1"></Tab.Pane>
-            <Tab.Pane eventKey="#link2"></Tab.Pane>
+            <Tab.Pane eventKey="#link1">
+              <p>entryContent</p>
+            </Tab.Pane>
+            <Tab.Pane eventKey="#link2">
+              <p>entryContent</p>
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>
@@ -40,3 +44,10 @@ const History = () => {
 };
 
 export default History;
+
+//Alix's notes
+//styling still
+//journal links
+//function to add new entry
+//{entry content} on 33 & 34 needs to be pulled in
+//{entryTitle} on 24 & 27 needs to be pulled in
