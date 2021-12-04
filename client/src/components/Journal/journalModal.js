@@ -1,6 +1,11 @@
 import React from "react";
 import { Modal } from "react-router-dom";
 
+const myStyle = {
+  color: "#403F48",
+  backgroundColor: "#E3D9CA",
+};
+
 function JournalModal(props) {
   return (
     <Modal
@@ -8,6 +13,7 @@ function JournalModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      style={myStyle}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

@@ -1,7 +1,7 @@
 import React from "react";
 
 const myStyle = {
-  color: "403F48",
+  color: "#403F48",
   backgroundColor: "#95A792",
   position: "fixed",
   left: "0",
