@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 // import moment from 'moment';
 
+// subdocument schema - used as the schema for the `journals` array in the User Schema
 const journalSchema = new Schema({
     title: {
         type: String,
