@@ -1,5 +1,3 @@
-// import mongoose from 'mongoose';
-// const { Schema, model } = mongoose;
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -57,9 +55,3 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = model('User', userSchema);
 
 module.exports = User;
-
-
-// createdAt: {
-//     type: Date,
-//     default: Date.now,
-// },
