@@ -1,15 +1,20 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
 
+const myStyle = {
+  color: "#403F48",
+  backgroundColor: "#95A792",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  height: "60px",
+  width: "100%",
+};
 const Footer = () => {
   const location = useLocation();
   const history = useHistory();
   console.log(location, history);
-  const myStyle = {
-    color: "403F48",
-    backgroundColor: "#95A792",
-  };
-    return (
+  
+  return (
     <footer className="w-100 mt-auto bg-secondary p-4">
       <div style={myStyle} className="container text-center mb-5">
         <h3>
