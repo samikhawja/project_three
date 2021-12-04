@@ -10,9 +10,9 @@ const myStyle = {
   width: "100%",
 };
 const Footer = () => {
-  const location = useLocation();
-  const history = useHistory();
-  console.log(location, history);
+  // const location = useLocation();
+  // const history = useHistory();
+  // console.log(location, history);
   
   return (
     <footer className="w-100 mt-auto bg-secondary p-4">
