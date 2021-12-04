@@ -4,9 +4,9 @@ const path = require('path')
 const { ApolloServer } = require('apollo-server-express');
 
 // Graphql schema bundle with definition and functions responsible for populating data in the schema
-const { typeDefs, resolvers } = require('.schemas');
+const { typeDefs, resolvers } = require('./schemas');
 // Import authentication middle 
-const { authMiddleware } = require('.utils/auth');
+const { authMiddleware } = require('./utils/auth');
 // Mongoose connection to MongoDB database instance
 const db = require('./config/connection');
 
