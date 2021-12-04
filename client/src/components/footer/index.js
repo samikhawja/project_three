@@ -4,6 +4,7 @@ import { useLocation, useHistory } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
   const history = useHistory();
+  console.log(location, history);
   const myStyle = {
     color: "403F48",
     backgroundColor: "#95A792",
