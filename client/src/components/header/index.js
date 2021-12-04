@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 // import Auth from "../../utils/auth";
 
 const myStyle = {
-  color: "403F48",
+  color: "#403F48",
   backgroundColor: "#95A792",
+  height: "100px",
+  width: "100%",
 };
 
 const Header = () => {

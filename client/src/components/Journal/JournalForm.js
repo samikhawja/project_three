@@ -1,9 +1,14 @@
 import React from "react";
 import { Form, Button } from "react-router-dom";
 
+const myStyle = {
+  color: "#403F48",
+  backgroundColor: "#E3D9CA",
+};
+
 const JournalForm = () => {
   return (
-    <Form>
+    <Form style={myStyle}>
       <Form.Group className="mb-3" controlId="entryTitle">
         <Form.Label>Title</Form.Label>
         <Form.Control type="entryTitle" placeholder="Todays Entry" />
