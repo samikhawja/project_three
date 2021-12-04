@@ -70,4 +70,4 @@ function TherapySearch() {
   );
 }
 
-export default TherapySearch();
+export default TherapySearch;
