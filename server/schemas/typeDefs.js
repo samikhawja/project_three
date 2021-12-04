@@ -6,9 +6,8 @@ const typeDefs = gql`
         name: String
         email: String
         password: String
-        fname: String
+        fname: f
         lname: String
-        createdAt: Date
         group: [Group]
         provider: [Provider]
         journals: [Journal]
@@ -17,7 +16,6 @@ const typeDefs = gql`
         title: String
         body: String
         sentiment: String
-        createdAt: Date
     }
     type Group {
         groupId: String
@@ -30,7 +28,7 @@ const typeDefs = gql`
         location: String
     }
     type Auth {
-        token: _id!
+        token: ID
         user: User
     }
     type Query {

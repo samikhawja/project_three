@@ -35,10 +35,7 @@ async function startApolloServer(typeDefs, resolvers) {
     await server.start();
 
     // integrate Express.js with the Apollo Server and connect the schema. Enables app to use GraphQL
-    server.applyMiddleware({ 
-        app, 
-        path: '/' 
-    });
+    server.applyMiddleware({ app });
 
     await new Promise(resolve =>
         db.once('open', () => {
