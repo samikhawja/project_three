@@ -1,6 +1,8 @@
-const { Schema } = require('mongoose');
+const { Schema, mongoose } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 // import moment from 'moment';
+
+// Mongoose automatically creates ids for subdocument arrays objects
 
 // subdocument schema - used as the schema for the `journals` array in the User Schema
 const journalSchema = new Schema({

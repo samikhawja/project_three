@@ -14,19 +14,18 @@ const typeDefs = gql`
         journals: [Journal]
     }
     type Journal {
-        _id: ID
         title: String
         body: String
         sentiment: String
         createdAt: Date
     }
     type Group {
-        id: String
+        groupId: String
         name: String
         location: String
     }
     type Provider {
-        id: String
+        providerId: String
         name: String
         location: String
     }
@@ -46,9 +45,9 @@ const typeDefs = gql`
 
         createJournal(title: String!, body: String!, sentiment: String!): User
 
-        addProvider(id: String!, name: String, location: String): User
+        addProvider(providerId: String!, name: String, location: String): User
 
-        addGroup(id: String!, name: String, location: String): User
+        addGroup(groupId: String!, name: String, location: String): User
     }
 `;
 

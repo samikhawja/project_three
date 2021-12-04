@@ -11,7 +11,7 @@ const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Parse incoming requests with urlencoded payloads and return as objects
 app.use(express.urlencoded({ extended: true }))
