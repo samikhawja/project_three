@@ -44,16 +44,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
+        <div>
           <Header />
           <Switch>
             {/* Default app page */}
             <Route exact path='/' component = { Home } />
             <Route exact path='/therapy' component = { TherapySearch } />
-            <Route exact path='/userdashboard' component = { UserDashboard } />
+            <Route exact path='/dashboard' component = { UserDashboard } />
           </Switch>
           <Footer />
-        </>
+        </div>
       </Router>
     </ApolloProvider>
   );

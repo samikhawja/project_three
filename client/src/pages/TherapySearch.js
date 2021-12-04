@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+console.log(useState, useEffect);
 // // External fetch to the google books api endpoint still managed in utils/API, not server implementation
 // import { searchGooglePlaces } from '../utils/api';
 
@@ -69,4 +70,4 @@ function TherapySearch() {
   );
 }
 
-export default TherapySearch();
+export default TherapySearch;
