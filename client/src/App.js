@@ -10,7 +10,7 @@ import UserDashboard from './pages/UserDashboard';
 
 // Import Header & Footer components, they are part of the UI while on any app page
 import MainNav from './components/MainNav/MainNav';
-import Footer from './components/Footer/index';
+import Footer from './components/Footer/Footer';
 
 
 // Establish GraphQL API endpoint

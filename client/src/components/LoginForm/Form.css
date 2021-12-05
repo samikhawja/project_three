@@ -1,0 +1,20 @@
+* {
+    color: #403F48;
+}
+
+#forms {
+    color: #403F48;
+}
+
+#btn-container {
+    text-align: center;
+}
+
+#btn {
+    display:block;
+    background-color: #95A792;
+    color: #FFFFFF;
+    border: none;
+    font-weight: bold;
+}
+
