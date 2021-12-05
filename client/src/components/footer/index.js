@@ -1,13 +1,9 @@
 import React from "react";
+import './footer.css';
 
 const myStyle = {
   color: "#403F48",
   backgroundColor: "#95A792",
-  position: "fixed",
-  left: "0",
-  bottom: "0",
-  height: "60px",
-  width: "100%",
 };
 const Footer = () => {
   // const location = useLocation();
@@ -15,7 +11,7 @@ const Footer = () => {
   // console.log(location, history);
   
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer className="w-100 mt-auto bg-secondary p-4" id="global-footer">
       <div style={myStyle} className="container text-center mb-5">
         <h3>
           {" "}

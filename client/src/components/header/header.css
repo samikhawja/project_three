@@ -1,0 +1,19 @@
+#header-nav {
+    background-color: #95A792;
+    font-weight: bolder;
+    /* Don't linebreak between words in an element*/ 
+    white-space: nowrap;
+    color: #403F48;
+    top: 0;
+}
+
+#brand {
+    /* color: #FB8974; */
+    /* font-weight: bold; */
+    /* letter-spacing: 1px; */
+}
+
+#nav-pages {
+    letter-spacing: 1px;
+    text-decoration: none;
+}
