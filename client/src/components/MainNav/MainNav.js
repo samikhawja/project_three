@@ -1,6 +1,8 @@
-import React from "react";
-import { Navbar, Nav} from 'react-bootstrap';
+import React, { useState } from "react";
+import { Navbar, Nav, Modal, Tab } from 'react-bootstrap';
 import './MainNav.css';
+import LoginForm from '../LoginForm/LoginForm';
+import SignupForm from '../LoginForm/SignupForm';
 
 // COMMENTED OUT until auth is set up, same line 12 & 30
 // import Auth from "../../utils/auth";
@@ -11,10 +13,13 @@ const MainNav = () => {
   //   event.preventDefault();
   //   Auth.logout();
   // };
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   return (
-    <Navbar id="header-nav" className="justify-content-between flex-wrap py-4 toggle-justify">
-      <h1 className="display-3 px-4 mx-2 my-2" id="brand">Through the Woods</h1>
-      <Nav className="px-3 mt-2 mx-2 fs-6" id="nav-pages">
+    <>
+      <Navbar id="header-nav" className="justify-content-between flex-wrap py-4 toggle-justify">
+        <h1 className="display-3 px-4 mx-2 my-2" id="brand">Through the Woods</h1>
+        <Nav className="px-3 mt-2 mx-2 fs-6" id="nav-pages">
           <Nav.Link href="/" className="mx-4 h3">
               HOME
           </Nav.Link>
@@ -24,41 +29,47 @@ const MainNav = () => {
           <Nav.Link href="/dashboard" className="mx-4 h3">
               DASHBOARD
           </Nav.Link>
-          <Nav.Link  className="mx-4 h3">
+          <Nav.Link  className="mx-4 h3" onClick={() => setShowLoginModal(true)}>
               LOGIN
           </Nav.Link>
         </Nav>
-    </Navbar>
-        // {/* COMMENTED OUT until auth is set up, */}
-        // {/* <div>
-        //   {Auth.loggedIn() ? (
-        //     <>
-        //       <Link className="btn btn-lg btn-info m-2" to="/me">
-        //         {Auth.getProfile().data.username}'s profile
-        //       </Link>
-        //       <button className="btn btn-lg btn-light m-2" onClick={logout}>
-        //         Logout
-        //       </button>
-        //     </>
-        //   ) : (
-        //     <>
-        //       <Link className="btn btn-lg btn-info m-2" to="/login">
-        //         Login
-        //       </Link>
-        //       <Link className="btn btn-lg btn-light m-2" to="/signup">
-        //         Signup
-        //       </Link>
-        //     </>
-        //   )}
-        // </div> */}
-    //   </div>
-    // </header>
+      </Navbar>
+      <Modal
+        show={showLoginModal}
+        onHide={() => setShowLoginModal(false)}
+        size='lg'
+        aria-labelledby='contained-modal-title-vcenter'
+        centered
+        id='login-modal'
+        >
+        <Tab.Container defaultActiveKey='login'>
+          <Modal.Header closeButton>
+                {/* Nav links determine which form(component) renders below. Default is Login */}
+                <Nav className='justify-content-around'>
+                  <Nav.Link eventKey='login' id='tab-login' className='h3'>
+                    Login
+                  </Nav.Link>
+                  <Nav.Link eventKey='signup' id='tab-signup' className='h3'>
+                    Sign Up
+                  </Nav.Link>
+                </Nav>
+          </Modal.Header>
+
+          <Modal.Body>
+            <Tab.Content>
+              {/* Render the relevent for based on with tab is active */}
+              <Tab.Pane eventKey="login">
+                <LoginForm handleModalClose={() => setShowLoginModal(false)} />
+              </Tab.Pane>
+              <Tab.Pane eventKey="signup">
+                <SignupForm handleModalClose={() => setShowLoginModal(false)} />
+              </Tab.Pane>
+            </Tab.Content>
+          </Modal.Body>
+        </Tab.Container>
+      </Modal>
+    </>      
   );
 };
-
+  
 export default MainNav;
-//Alix's notes
-//styling
-//links
-//buttons?
-//photo?

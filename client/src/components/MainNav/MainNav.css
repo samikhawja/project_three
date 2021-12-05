@@ -11,3 +11,19 @@
     letter-spacing: 1px;
     text-decoration: none;
 }
+
+#tab-login{
+    text-decoration: none;
+    color: #403F48;
+    display:inline-block;
+}
+
+#tab-login:hover{
+    cursor:pointer;
+}
+
+#tab-signup {
+    text-decoration: none;
+    color: #403F48;
+    display:inline-block;
+}
