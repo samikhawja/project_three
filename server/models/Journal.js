@@ -1,8 +1,7 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
-// import moment from 'moment';
 
-// subdocument schema - used as the schema for the `journals` array in the User Schema
 const journalSchema = new Schema(
     {
         title: {
@@ -27,10 +26,8 @@ const journalSchema = new Schema(
             get: (timestamp) => dateFormat(timestamp),
         },
     },
-    // tells Mongoose to automatically manage createdAt and updatedAt properties
-    // { timestamps : true },
 );
 
-const Journal = model('Journal', journalSchema);
+const Journal = mongoose.model('Journal', journalSchema);
 
 module.exports = Journal;

@@ -5,7 +5,7 @@ const typeDefs = gql`
         _id: ID
         email: String
         password: String
-        fname: f
+        fname: String
         lname: String
         journals: [Journal]!
     }
