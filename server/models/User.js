@@ -3,8 +3,6 @@ const bcrypt = require('bcrypt');
 
 // import relevant schemas
 const journalSchema = require('./Journal');
-const groupSchema = require('./Group');
-const providerSchema = require('./Provider');
 
 const userSchema = new Schema(
     {
@@ -29,12 +27,12 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
-        //providers is an array of data that adheres to the providerSchema
-        provider: [providerSchema],
-        //groups is an array of data that adheres to the groupSchema
-        groups: [groupSchema],
-        //journals is an array of data that adheres to the journalSchema
-        journals: [journalSchema]
+        journals: [
+            {
+              type: Schema.Types.ObjectId,
+              ref: 'Journal',
+            },
+        ],
     },
     // tells Mongoose to automatically manage createdAt and updatedAt properties
     { timestamps : true },

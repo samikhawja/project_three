@@ -3,57 +3,18 @@
         "email": "skhawja@gmail.com",
         "password": "password1",
         "fname": "Sami",
-        "lname": "Khawja",
-        "createdAt": "1",
-        "provider": [
-            {
-                "fname": "First1",
-                "lname": "Last1",
-                "phone": "1"
-            }
-        ],
-        "group": [
-            {
-                "groupName": "AA1"
-            }
-        ]
+        "lname": "Khawja"
     },
     {
         "email": "afriedman@gmail.com",
         "password": "password2",
         "fname": "Alix",
-        "lname": "Friedman",
-        "createdAt": "2",
-        "provider": [
-            {
-                "fname": "First2",
-                "lname": "Last2",
-                "phone": "2"
-            }
-        ],
-        "group": [
-            {
-                "groupName": "AA2"
-            }
-        ]
+        "lname": "Friedman"
     },
     {
         "email": "shollingsworth@gmail.com",
         "password": "password3",
         "fname": "Sarah",
-        "lname": "Hollingsworth",
-        "createdAt": "3",
-        "provider": [
-            {
-                "fname": "First3",
-                "lname": "Last3",
-                "phone": "3"
-            }
-        ],
-        "group": [
-            {
-                "groupName": "AA3"
-            }
-        ]
+        "lname": "Hollingsworth"
     }
 ]

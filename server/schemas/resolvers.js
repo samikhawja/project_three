@@ -1,11 +1,27 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Journal } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        users: async () => {
+            return User.find().populate('journals');
+        },
         user: async (parent, { email }) => {
-            return User.findOne({ email });
+            return User.findOne({ email }).populate('journals');
+        },
+        journals: async (parent, { email }) => {
+            const params = email ? { email } : {};
+            return Journal.find(params).sort({ createdAt: -1 });
+        },
+        journal: async (parent, { journalId }) => {
+            return Journal.findOne({ _id: journalId });
+        },
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return User.findOne({ _id: context.user._id }).populate('journals');
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
     },
     Mutation: {
@@ -21,8 +37,8 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        createUser: async (parent, args) => {
-            const user = await User.create(args);
+        createUser: async (parent, { email, password, fname, lname }) => {
+            const user = await User.create({ email, password, fname, lname });
             const token = signToken(user);
             return { token, user };
         },
@@ -32,18 +48,19 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        createJournal: async (parent, { journalData }, context ) =>{
+        createJournal: async (parent, { journalText }, context) => {
             if (context.user) {
-                const updateUserJournals = await User.findByIdAndUpdate(
+                const journal = await Journal.create({
+                    journalText,
+                    journalAuthor: context.user.email,
+                });
+                await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    // Add the journal to the end of the journals array using the push method
-                    { $push: { journals: journalData } },
-                    // return the modified User document that includes the new journal in the journals array
-                    { new: true }
+                    { $addToSet: { journals: journal._id } }
                 );
-                return updateUserJournals;
+                return journal;
             }
-            throw new AuthenticationError('Cannot find a user matching this id.');
+            throw new AuthenticationError('You need to be logged in!');
         },
         // addProvider: async (parent, { providerData }, context) => {
         //     console.log(context);
@@ -54,19 +71,19 @@ const resolvers = {
         //     }
         //     throw new AuthenticationError('Not logged in');
         // },
-        addProvider: async (parent, { providerData }, context ) =>{
-            if (context.user) {
-                const updateUserProviders = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    // Add the provider to the end of the providers array using the push method
-                    { $push: { providers: providerData } },
-                    // return the modified User document that includes the new provider in the providers array
-                    { new: true }
-                );
-                return updateUserProviders;
-            }
-            throw new AuthenticationError('Cannot find a user matching this id.');
-        },
+        // addProvider: async (parent, { providerData }, context ) =>{
+        //     if (context.user) {
+        //         const updateUserProviders = await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             // Add the provider to the end of the providers array using the push method
+        //             { $push: { providers: providerData } },
+        //             // return the modified User document that includes the new provider in the providers array
+        //             { new: true }
+        //         );
+        //         return updateUserProviders;
+        //     }
+        //     throw new AuthenticationError('Cannot find a user matching this id.');
+        // },
         // addGroup: async (parent, { groupData }, context) => {
         //     console.log(context);
         //     if (context.user) {
@@ -76,19 +93,19 @@ const resolvers = {
         //     }
         //     throw new AuthenticationError('Not logged in');
         // },
-        addGroup: async (parent, { groupData }, context ) =>{
-            if (context.user) {
-                const updateUserGroups = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    // Add the group to the end of the groups array using the push method
-                    { $push: { groups: groupData } },
-                    // return the modified User document that includes the new group in the groups array
-                    { new: true }
-                );
-                return updateUserGroups;
-            }
-            throw new AuthenticationError('Cannot find a user matching this id.');
-        },
+        // addGroup: async (parent, { groupData }, context ) =>{
+        //     if (context.user) {
+        //         const updateUserGroups = await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             // Add the group to the end of the groups array using the push method
+        //             { $push: { groups: groupData } },
+        //             // return the modified User document that includes the new group in the groups array
+        //             { new: true }
+        //         );
+        //         return updateUserGroups;
+        //     }
+        //     throw new AuthenticationError('Cannot find a user matching this id.');
+        // },
     },
 };
 
