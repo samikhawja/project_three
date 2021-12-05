@@ -9,9 +9,9 @@ db.once('open', async () => {
         await User.deleteMany({});
         await User.create(userSeeds);
         for (let i = 0; i < journalSeeds.length; i++) {
-            const { _id, journalAuthor } = await Journal.create(journalSeeds[i]);
+            const { _id, title } = await Journal.create(journalSeeds[i]);
             const user = await User.findOneAndUpdate(
-                { username: journalAuthor },
+                { email: title },
                 {
                 $addToSet: {
                     journals: _id,

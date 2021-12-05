@@ -1,8 +1,6 @@
-const { Schema } = require('mongoose');
-// const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 // import moment from 'moment';
-
-// Mongoose automatically creates ids for subdocument arrays objects
 
 // subdocument schema - used as the schema for the `journals` array in the User Schema
 const journalSchema = new Schema(
@@ -23,9 +21,16 @@ const journalSchema = new Schema(
             type: String,
             required: true,
         },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
+        },
     },
     // tells Mongoose to automatically manage createdAt and updatedAt properties
-    { timestamps : true },
+    // { timestamps : true },
 );
 
-module.exports = journalSchema;
+const Journal = model('Journal', journalSchema);
+
+module.exports = Journal;
