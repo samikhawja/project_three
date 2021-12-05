@@ -9,7 +9,7 @@ import TherapySearch from './pages/TherapySearch';
 import UserDashboard from './pages/UserDashboard';
 
 // Import Header & Footer components, they are part of the UI while on any app page
-import Header from './components/Header/index';
+import MainNav from './components/MainNav/MainNav';
 import Footer from './components/Footer/index';
 
 
@@ -45,7 +45,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Header />
+          <MainNav />
           <Switch>
             {/* Default app page */}
             <Route exact path='/' component = { Home } />
