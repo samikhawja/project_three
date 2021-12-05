@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, ListGroup, Modal, Tab} from "react-router-dom";
+import { Table } from "react-router-dom";
 //import entry title
 const myStyle = {
   color: "#403F48",
@@ -7,106 +7,44 @@ const myStyle = {
 };
 
 const JournalView = () => {
-const [showJournalModal, setShowJournalModal] = useState(false);
-
   return (
-    <>
+    <div style={myStyle}>
       <Table responsive>
-        <div style={myStyle}>
         <thead>
           <tr>
-          <ListGroup.Item action onClick={() => setShowJournalModal(true)}>
-        To modal testing
-        </ListGroup.Item>   
+            <th>#</th>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <th key={index}>Table heading</th>
+            ))}
           </tr>
         </thead>
-        </div>
+        <tbody>
+          <tr>
+            <td>1</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>entryTitle {index}</td>
+            ))}
+          </tr>
+          <tr>
+            <td>2</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>entryTitle {index}</td>
+            ))}
+          </tr>
+          <tr>
+            <td>3</td>
+            {Array.from({ length: 12 }).map((_, index) => (
+              <td key={index}>entryTitle {index}</td>
+            ))}
+          </tr>
+        </tbody>
       </Table>
-<Modal
-show={showJournalModal}
-onHide={() => setShowJournalModal(false)}
-  size="lg"
-  aria-labelledby="contained-modal-title-vcenter"
-  centered
-  style={myStyle}
-  id='journal-modal'
->
-  <Modal.Header closeButton>
-    <Modal.Title id="contained-modal-title-vcenter">
-      fname's Journal
-    </Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <Tab.Container
-      style={myStyle}
-      id="list-group-tabs-example"
-      defaultActiveKey="#link1"
-    >
-      <Row>
-        <Col sm={4}>
-          <ListGroup>
-            <ListGroup.Item action href="#link1">
-              entryTitle
-            </ListGroup.Item>
-            <ListGroup.Item action href="#link2">
-              entryTitle
-            </ListGroup.Item>
-            <ListGroup>
-            <ListGroup.Item action href="#link3">
-              entryTitle
-            </ListGroup.Item>
-            <ListGroup>
-            <ListGroup.Item action href="#link4">
-              entryTitle
-            </ListGroup.Item>
-            <ListGroup>
-            <ListGroup.Item action href="#link5">
-              entryTitle
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-        <Col sm={8}>
-          <Tab.Content>
-            <Tab.Pane eventKey="#link1">
-              <h4> entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link2">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link3">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link4">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link5">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-          </Tab.Content>
-        </Col>
-      </Row>
-    </Tab.Container>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button onClick={() => setShowLoginModal(false)}}>Close</Button>
-  </Modal.Footer>
-</Modal>
-</>
-);
+    </div>
+  );
 };
 
 export default JournalView;
 
 // Alix's Notes
 // Table with 3 entries
-// modal from https://react-bootstrap.github.io/components/modal/</Tab.Container>
+// title is link to entry modal?

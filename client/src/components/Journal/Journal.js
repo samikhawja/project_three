@@ -27,4 +27,3 @@ export default JournalContainer;
 
 //Alix's notes
 //"see more" when clicked replaces form + view with history.js
-//this is container with red outline on wireframe

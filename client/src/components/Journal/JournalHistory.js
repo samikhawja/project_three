@@ -51,6 +51,3 @@ export default History;
 //function to add new entry
 //{entry content} on 33 & 34 needs to be pulled in
 //{entryTitle} on 24 & 27 needs to be pulled in
-//this is that tabbed entry look
-//needs logic for content + title
-//https://react-bootstrap.netlify.app/components/tabs/
