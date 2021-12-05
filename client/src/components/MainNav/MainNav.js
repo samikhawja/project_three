@@ -24,6 +24,9 @@ const MainNav = () => {
           <Nav.Link href="/dashboard" className="mx-4 h3">
               DASHBOARD
           </Nav.Link>
+          <Nav.Link  className="mx-4 h3">
+              LOGIN
+          </Nav.Link>
         </Nav>
     </Navbar>
         // {/* COMMENTED OUT until auth is set up, */}
