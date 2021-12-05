@@ -17,7 +17,6 @@ const JournalForm = () => {
         <Form.Label>How are you feeling today?</Form.Label>
         <Form.Control as="textarea" rows={3} />
       </Form.Group>
-
       {["checkbox"].map((type) => (
         <div key={type} className="mb-3">
           <Form.Check type={happy} id={`check-api-${happy}`}>
