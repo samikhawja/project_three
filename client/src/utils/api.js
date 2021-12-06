@@ -6,9 +6,9 @@ export const searchGooglePlaces = (query) => {
     return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=${api_key}`)
 
 };
-
+// route to get logged in user's info (needs the token)
 export const getUser = (token) => {
-    return fetch('/api/users/me', {
+    return fetch('/api/users/user', {
         headers: {
             'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
@@ -16,6 +16,7 @@ export const getUser = (token) => {
     });
 };
 
+// route to get login user's info
 export const loginUser = (userData) => {
     return fetch('/api/users/login', {
         method: 'POST',

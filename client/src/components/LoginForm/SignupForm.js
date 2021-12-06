@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+
+import Auth from "../../utils/auth";
+
 import { useMutation } from '@apollo/client';
+import { CREATE_USER } from '../../utils/mutations.js'
+
 import { Form, Button, Alert } from 'react-bootstrap';
 import './Form.css';
-import Auth from "../../utils/auth";
-import { CREATE_USER } from '../../utils/mutations.js'
+
+
 
 const SignupForm = () => {
     const [formData, setFormData] = useState({ 
@@ -34,6 +39,7 @@ const SignupForm = () => {
         // stop default form behavior, page refresh on submission
         event.preventDefault();
 
+        // must include 'current'
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -51,15 +57,16 @@ const SignupForm = () => {
             Auth.login(data.createUser.token);
         } catch (e) {
             console.error(e);
+            
             setShowAlert(true);
         }
 
         // clear input contents upon submission of form
         setFormData({ 
-        fname:'',
-        lname:'',
-        email: '', 
-        password: '' 
+            fname:'',
+            lname:'',
+            email: '', 
+            password: '' 
         });
     }
 

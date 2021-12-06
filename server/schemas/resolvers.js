@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Journal } = require('../models');
+const { User } = require('../models');
+//, Journal
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -29,20 +30,28 @@ const resolvers = {
         // // /TODO
     },
     Mutation: {
-        // Login user (from LoginForm)
+        // Login user using email and password values provided from client (LoginForm)
         login: async (parent, { email, password }) => {
+            // Look for document with matching email in User collection
             const user = await User.findOne({ email });
+
+            // Notify user if there isn't a document with provided email
             if (!user) {
                 throw new AuthenticationError('Incorrect email');
             }
-            const correctPw = await user.isCorrectPassword(password);
-            if (!correctPw) {
+
+            // Compare password input to password in User document using custom method
+            const correctPassword = await user.isCorrectPassword(password);
+
+            // Notify user if password input doesn't match document
+            if (!correctPassword) {
                 throw new AuthenticationError('Incorrect credentials');
             }
+            // User session is authenticated, with expiration clock started
             const token = signToken(user);
             return { token, user };
         },
-        // Create user (from SignupForm)
+        // Create user using values provided from client (SignupForm)
         createUser: async (parent, { fname, lname, email, password  }) => {
             const user = await User.create({ fname, lname, email, password  });
 
@@ -50,12 +59,12 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        updateUser: async (parent, args, context) => {
-            if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-            }
-            throw new AuthenticationError('Not logged in');
-        },
+        // updateUser: async (parent, args, context) => {
+        //     if (context.user) {
+        //         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+        //     }
+        //     throw new AuthenticationError('Not logged in');
+        // },
         // INITIAL IMPLEMENTATION
         // createJournal: async (parent, { journalText }, context) => {
         //     if (context.user) {
