@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 const bcrypt = require('bcrypt');
+
+const Journal = require('./Journal');
+
 const providerSchema = require('./Provider');
 const groupSchema = require('./Group');
 
@@ -27,14 +30,9 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
-        provider: [providerSchema],
-        group: [groupSchema],
-        journal: [
-            {
-              type: Schema.Types.ObjectId,
-              ref: 'Journal'
-            }
-        ],
+        providers: [providerSchema],
+        groups: [groupSchema],
+        journals: [Journal.schema],
         createdAt: {
             type: Date,
             default: Date.now,
