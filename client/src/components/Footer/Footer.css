@@ -1,3 +1,4 @@
+/* Force to stay at bottom of the viewport */
 #global-footer {
     position: fixed;
     left: 0;

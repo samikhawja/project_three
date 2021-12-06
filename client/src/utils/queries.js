@@ -1,2 +1,4 @@
 import { gql } from '@apollo/client';
-console.log(gql);
+
+// export const GET_USER = gql`
+// `;
