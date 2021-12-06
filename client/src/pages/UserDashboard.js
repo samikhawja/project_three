@@ -1,7 +1,15 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 
-// Placeholder so the app will build
+const myStyle = {
+  color: "#403F48",
+  backgroundColor: "#E3D9CA",
+};
+const myStyle2 = {
+  color: "#403F48",
+  backgroundColor: "#95A792",
+};
+
 const UserDashboard = () => {
   return (
     <Row xs={1} md={2} className="g-4">
@@ -9,13 +17,9 @@ const UserDashboard = () => {
         <Col>
           <Card>
             <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
+            <Card.Body style={myStyle}>
+              <Card.Title style={myStyle2}>Card title</Card.Title>
+              <Card.Text>Dashboard stuff.</Card.Text>
             </Card.Body>
           </Card>
         </Col>
