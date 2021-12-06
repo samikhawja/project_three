@@ -1,4 +1,11 @@
-import { Form, Row, Col, FloatingLabel, Container } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  FloatingLabel,
+  Container,
+  Button,
+} from "react-bootstrap";
 import "./../App.css";
 import React from "react";
 //import useFetch from "react-fetch-hook";
@@ -33,15 +40,16 @@ function TherapySearch() {
           <Form>
             <Row>
               <Col xs={7}>
-                <Form.Control placeholder="City" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
               <Col>
-                <Form.Control placeholder="State" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
               <Col>
-                <Form.Control placeholder="Zip" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
             </Row>
+            <Button variant="success">Submit</Button>{" "}
             <Row>
               <Col>INSERT GOOGLE API RESPONSE HERE</Col>
             </Row>
@@ -58,3 +66,5 @@ export default TherapySearch;
 //city, state, zip?
 //container to load results
 //STYLE!
+//option values assigned
+//pre-converted options of distance
