@@ -25,7 +25,7 @@ export const CREATE_USER = gql`
 `;
 
 export const ADD_GROUP = gql`
-mutation addGroup(($groupData: GroupInput!) {
+mutation addGroup($groupData: GroupInput!) {
     addGroup(groupData: $groupData) {
         _id
         groups {

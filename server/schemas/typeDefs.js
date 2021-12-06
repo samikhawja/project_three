@@ -49,17 +49,6 @@ const typeDefs = gql`
     }
     type Query {
         user: User
-        
-        journal(_id: ID!): Journal
-
-        journals(context.user._id: ID!): [Journal]
-
-        providers
-
-        groups
-
-        --
-        
     }
     type Mutation {
         login(email: String!, password: String!): Auth
@@ -67,7 +56,7 @@ const typeDefs = gql`
         createUser(email: String!, password: String!, fname: String!, lname: String!): Auth
 
         addProvider(providerData: ProviderInput!): User
-        
+
         addGroup(groupData: GroupInput!): User
 
         updateUser(email: String, password: String, fname: String, lname: String): Auth
@@ -75,6 +64,11 @@ const typeDefs = gql`
         createJournal(journalData: JournalInput!): Journal
     }
 `;
+// queries
+// journal(_id: ID!): Journal
+
+// journals(context.user._id: ID!): [Journal]
+
 
 
 // type Query {

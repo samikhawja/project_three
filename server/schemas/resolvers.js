@@ -11,21 +11,22 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in to see your Providers & Groups.');
         },
-        // TODO:
-        user: async (parent, args, context) => {
-            if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('journals');
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-        journals: async (parent, { email }) => {
-            const params = email ? { email } : {};
-            return Journal.find(params).sort({ createdAt: -1 });
-        },
-        journal: async (parent, { journalId }) => {
-            return Journal.findOne({ _id: journalId });
-        },
-        // /TODO
+        // CURRENT IMPLEMENTATION COMMENTED OUT BECAUSE I'VE DEEPLY OFFENDED THE TERMINAL
+        // // TODO:
+        // user: async (parent, args, context) => {
+        //     if (context.user) {
+        //         return User.findOne({ _id: context.user._id }).populate('journals');
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        // journals: async (parent, { email }) => {
+        //     const params = email ? { email } : {};
+        //     return Journal.find(params).sort({ createdAt: -1 });
+        // },
+        // journal: async (parent, { journalId }) => {
+        //     return Journal.findOne({ _id: journalId });
+        // },
+        // // /TODO
     },
     Mutation: {
         // Login user (from LoginForm)
@@ -70,18 +71,19 @@ const resolvers = {
         //     }
         //     throw new AuthenticationError('You need to be logged in!');
         // },
-        // create a new Journal leveraging user context
-        createJournal: async (parent, { journalData }, context) => {
-            if (context.user) {
-                const journal = new Journal({ journalData });
+        // CURRENT IMPLEMENTATION COMMENTED OUT BECAUSE I'VE DEEPLY OFFENDED THE TERMINAL
+        // // create a new Journal leveraging user context
+        // createJournal: async (parent, { journalData }, context) => {
+        //     if (context.user) {
+        //         const journal = new Journal({ journalData });
         
-                await User.findByIdAndUpdate(context.user._id, { $push: { journals: journal } });
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { journals: journal } });
         
-                return journal;
-            }
+        //         return journal;
+        //     }
         
-            throw new AuthenticationError('Not logged in');
-        },
+        //     throw new AuthenticationError('Not logged in');
+        // },
         // Add a Provider to a user's providers
         addProvider: async (parent, { providerData }, context ) =>{
             if (context.user) {
