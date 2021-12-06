@@ -7,7 +7,19 @@ const typeDefs = gql`
         password: String
         fname: String
         lname: String
-        journals: [Journal]!
+        provider: [Provider]
+        group: [Group]
+        journal: [Journal]
+    }
+    type Provider {
+        place_id: String
+        name: String
+        location: String
+    }
+    type Group {
+        place_id: String
+        name: String
+        location: String
     }
     type Journal {
         _id: ID
@@ -21,9 +33,7 @@ const typeDefs = gql`
         user: User
     }
     type Query {
-        users: [User]
-        user(email: String!): User
-        journals(email: String): [Journal]
+        journals(context.user._id: ID!): [Journal]
         journal(journalId: ID!): Journal
         me: User
     }
