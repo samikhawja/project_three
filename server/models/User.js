@@ -1,8 +1,7 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const dateFormat = require('../utils/dateFormat');
 const bcrypt = require('bcrypt');
-
-// import relevant schemas
-const journalSchema = require('./Journal');
 
 const userSchema = new Schema(
     {
@@ -27,29 +26,68 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
-        journals: [
+        provider: [
+            {
+                place_id: {
+                    type: String,
+                    required: true,
+                },
+                name: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+                location: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+            }
+        ],
+        group: [
+            {
+                place_id: {
+                    type: String,
+                    required: true,
+                },
+                name: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+                location: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+            }
+        ],
+        journal: [
             {
               type: Schema.Types.ObjectId,
-              ref: 'Journal',
-            },
+              ref: 'Journal'
+            }
         ],
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
+        },
     },
-    // tells Mongoose to automatically manage createdAt and updatedAt properties
-    { timestamps : true },
 );
 
-userSchema.pre('save', async function (done) {
+userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
-    done()
+    next()
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

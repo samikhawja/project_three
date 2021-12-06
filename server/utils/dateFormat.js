@@ -1,7 +1,3 @@
-// moment for fortmatting
-// import moment from 'moment';
-// moment().format();
-
 const addDateSuffix = (date) => {
     let dateStr = date.toString();
   
