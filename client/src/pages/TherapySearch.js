@@ -1,72 +1,20 @@
-import React, { useState, useEffect } from 'react';
-console.log(useState, useEffect);
-// // External fetch to the google books api endpoint still managed in utils/API, not server implementation
-// import { searchGooglePlaces } from '../utils/api';
+import React from 'react';
+import useFetch from "react-fetch-hook";
+
+// require('dotenv').config();
 
 function TherapySearch() {
-    // const [error, setError] = useState(null);
-    // const [isLoaded, setIsLoaded] = useState(false);
-    // const [items, setItems] = useState([]);
+  const { isLoading, error, data } = useFetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY")
 
-    // const handleFormSubmit = async (event) => {
-    //   event.preventDefault();
-      
-    //   // Catch if there wasn't any data provided by the user in the search form
-    //   if (!searchData) {
-    //     return false;
-    //   }
-    
-    //   try {
-    //     // pass through search field data including location and types
-    //     const response = await searchGoogleAPI(searchData);
+  if (isLoading) return "Loading...";
+  if (error) return "Error!";
+  console.log(data.results)
 
-    //     if (!response.ok) {
-    //       throw new Error('We encountered an error completing your search.')
-    //     }
 
-    //     // convert api response to a JSON object
-    //     const { items } = await response.json();
-
-    //     //placeholder to avoid error
-    //     console.log(items);
-
-    //   }
-    // },
-    //Commented this out while we continue work on the API logic, so that the abb will build in the meanwhile
-    // useEffect(() => {
-        
-    //         .then(res => res.json())
-    //         .then(
-    //         (result) => {
-    //             setIsLoaded(true);
-    //             setItems(result);
-    //         },
-    //         (error) => {
-    //             setIsLoaded(true);
-    //             setError(error);
-    //         }
-    //         )
-    // }, [])
-  
-    // if (error) {
-    //   return <div>Error: {error.message}</div>;
-    // } else if (!isLoaded) {
-    //   return <div>Loading...</div>;
-    // } else {
-    //   return (
-    //     <ul>
-    //       {items.map(item => (
-    //         <li key={item.id}>
-    //           {item.name} {item.price}
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   );
-    // }
-    return (
-      <div>
-          <h1>TherapySearch page placeholder</h1>
-      </div>
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
   );
 }
 
