@@ -1,7 +1,11 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 const bcrypt = require('bcrypt');
+
+const Journal = require('./Journal');
+
+const providerSchema = require('./Provider');
+const groupSchema = require('./Group');
 
 const userSchema = new Schema(
     {
@@ -26,48 +30,9 @@ const userSchema = new Schema(
             required: true,
             trim: true,
         },
-        provider: [
-            {
-                place_id: {
-                    type: String,
-                    required: true,
-                },
-                name: {
-                    type: String,
-                    required: true,
-                    trim: true
-                },
-                location: {
-                    type: String,
-                    required: true,
-                    trim: true
-                },
-            }
-        ],
-        group: [
-            {
-                place_id: {
-                    type: String,
-                    required: true,
-                },
-                name: {
-                    type: String,
-                    required: true,
-                    trim: true
-                },
-                location: {
-                    type: String,
-                    required: true,
-                    trim: true
-                },
-            }
-        ],
-        journal: [
-            {
-              type: Schema.Types.ObjectId,
-              ref: 'Journal'
-            }
-        ],
+        providers: [providerSchema],
+        groups: [groupSchema],
+        journals: [Journal.schema],
         createdAt: {
             type: Date,
             default: Date.now,
@@ -88,6 +53,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
