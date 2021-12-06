@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/samikhawja/project_three#readme",
   "dependencies": {
-    "concurrently": "^6.4.0",
-    "dotenv": "^10.0.0"
+    "concurrently": "^6.4.0"
   }
 }
