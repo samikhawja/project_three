@@ -1,24 +1,21 @@
 import { Form, Row, Col, FloatingLabel, Container } from "react-bootstrap";
 import "./../App.css";
-import React from 'react';
-import useFetch from "react-fetch-hook";
+import React from "react";
+//import useFetch from "react-fetch-hook";
 
 // require('dotenv').config();
-
+const myStyle = {
+  color: "#403F48",
+  backgroundColor: "#E3D9CA",
+  width: "100%",
+  height: "100%",
+};
 function TherapySearch() {
-  const myStyle = {
-    color: "#403F48",
-    backgroundColor: "#E3D9CA",
-    width: "100%",
-    height: "100%",
-  };
+  // const { isLoading, error, data } = useFetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY%22)
 
-  const { isLoading, error, data } = useFetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY%22)
-
-  if (isLoading) return "Loading...";
-  if (error) return "Error!";
-  console.log(data.results)
-
+  // if (isLoading) return "Loading...";
+  // if (error) return "Error!";
+  // console.log(data.results);
 
   return (
     <Container style={myStyle}>
