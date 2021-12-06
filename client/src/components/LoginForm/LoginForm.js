@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import Auth from "../../utils/auth";
+
 import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../utils/mutations.js'
+
 import { Form, Button, Alert } from 'react-bootstrap';
 import './Form.css';
-import Auth from "../../utils/auth";
-import { LOGIN } from '../../utils/mutations.js'
+
+
 
 const LoginForm = () => {
     // default state of form is empty values in inputs
@@ -52,6 +56,7 @@ const LoginForm = () => {
 
         } catch (e) {
             console.error(e);
+            
             //display error in UI
             setShowAlert(true);
         }

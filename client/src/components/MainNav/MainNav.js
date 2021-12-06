@@ -1,18 +1,13 @@
 import React, { useState } from "react";
+import Auth from "../../utils/auth";
+
 import { Navbar, Nav, Modal, Tab } from 'react-bootstrap';
 import './MainNav.css';
+
 import LoginForm from '../LoginForm/LoginForm';
 import SignupForm from '../LoginForm/SignupForm';
 
-// COMMENTED OUT until auth is set up, same line 12 & 30
-// import Auth from "../../utils/auth";
-
 const MainNav = () => {
-  // COMMENTED OUT until auth is set up
-  // const logout = (event) => {
-  //   event.preventDefault();
-  //   Auth.logout();
-  // };
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   return (
@@ -26,12 +21,22 @@ const MainNav = () => {
           <Nav.Link href="/therapy" className="mx-4 h3">
               THERAPY SEARCH
           </Nav.Link>
-          <Nav.Link href="/dashboard" className="mx-4 h3">
-              DASHBOARD
-          </Nav.Link>
-          <Nav.Link  className="mx-4 h3" onClick={() => setShowLoginModal(true)}>
-              LOGIN
-          </Nav.Link>
+          {/* Authenticated user nav includes Dashboard and Logout options */}
+          {Auth.loggedIn() ? (
+            //Need to maintain single parent element or it all borks
+            <>
+              <Nav.Link href="/dashboard" className="mx-4 h3">
+                  DASHBOARD
+              </Nav.Link>
+              <Nav.Link  className="mx-4 h3" onClick={Auth.logout}>
+                  LOGOUT
+              </Nav.Link>
+            </>
+          ) : (
+            <Nav.Link  className="mx-4 h3" onClick={() => setShowLoginModal(true)}>
+                LOGIN
+            </Nav.Link>
+          )}
         </Nav>
       </Navbar>
       <Modal
