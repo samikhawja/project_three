@@ -90,5 +90,6 @@ Code snippets and explanation
 | - [Github](https://github.com/samikhawja)| - [Github](https://github.com/Alix1713) | - [Github](https://github.com/sahhollingsworth) |
 | - [LinkedIn](https://www.linkedin.com/in/samikhawja/)| - [LinkedIn](https://www.linkedin.com/in/alix1713/) | - [LinkedIn](https://www.linkedin.com/in/sarahhollingsworth/)|
 
-## Acknowledgements
-* tbd
+## Helpful References
+* [Stack Overflow discussion](https://stackoverflow.com/questions/5963669/whats-the-difference-between-event-stoppropagation-and-event-preventdefault) on the difference between event.stopPropagation() vs event.PreventDefault()
+* React-Boostrap documentation on [Form validation](https://react-bootstrap.netlify.app/components/forms/#forms-validation) and [Alerts](https://getbootstrap.com/docs/4.0/components/alerts/)
