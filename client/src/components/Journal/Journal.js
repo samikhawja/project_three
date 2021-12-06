@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { JournalView } from "./JournalView";
+import { JournalForm } from "./JournalForm";
 //import journalview, journalform
 //see more, submit buttons
 
@@ -13,10 +15,11 @@ function JournalContainer() {
     <Container style={myStyle}>
       <Row>
         <Col md={6}>
-          JOURNALVIEW <Button variant="outline-success">See more</Button>{" "}
+          {JournalView} <Button variant="outline-success">See more</Button>{" "}
         </Col>
         <Col md={6}>
-          JOURNALFORM <Button variant="outline-success">Submit</Button>{" "}
+          {JournalForm}
+          <Button variant="outline-success">Submit</Button>{" "}
         </Col>
       </Row>
     </Container>
