@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
 //import journalview, journalform
 //see more, submit buttons
 
