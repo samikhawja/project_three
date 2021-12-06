@@ -10,7 +10,7 @@ const myStyle = {
 const Home = () => {
   return (
     <div style={myStyle}>
-      <Card style={myStyle}>
+      <Card>
         <Card.Header>Quote</Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
