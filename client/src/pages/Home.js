@@ -10,6 +10,17 @@ const myStyle = {
 const Home = () => {
   return (
     <div style={myStyle}>
+      <Card style={myStyle}>
+        <Card.Header>Quote</Card.Header>
+        <Card.Body>
+          <blockquote className="blockquote mb-0">
+            <p> Quote Api here </p>
+            <footer className="blockquote-footer">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </footer>
+          </blockquote>
+        </Card.Body>
+      </Card>
       <Carousel>
         <Carousel.Item interval={1000}>
           <img
@@ -43,21 +54,6 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <Card style={myStyle}>
-        <Card.Header>Quote</Card.Header>
-        <Card.Body>
-          <blockquote className="blockquote mb-0">
-            <p>
-              {" "}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              posuere erat a ante.{" "}
-            </p>
-            <footer className="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </Card.Body>
-      </Card>
     </div>
   );
 };
