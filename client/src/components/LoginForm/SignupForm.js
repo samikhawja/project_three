@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { Form, Button } from 'react-bootstrap';
 import './Form.css';
-
 import Auth from "../../utils/auth";
-//import { createUser } from somewhere in utils, api or mutation?
+import { CREATE_USER } from '../../utils/mutations.js'
 
 const SignupForm = () => {
     const handleFormSubmit = async (event) => {
@@ -11,7 +11,7 @@ const SignupForm = () => {
     }
 
     return (
-        <Form id='forms' className='px-3'>
+        <Form id='form' className='px-3'>
             <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" placeholder="John" />
