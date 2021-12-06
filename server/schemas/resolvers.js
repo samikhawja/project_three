@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-//, Journal
+const { User, Journal } = require('../models');
+
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -12,22 +12,17 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in to see your Providers & Groups.');
         },
-        // CURRENT IMPLEMENTATION COMMENTED OUT BECAUSE I'VE DEEPLY OFFENDED THE TERMINAL
-        // // TODO:
-        // user: async (parent, args, context) => {
-        //     if (context.user) {
-        //         return User.findOne({ _id: context.user._id }).populate('journals');
-        //     }
-        //     throw new AuthenticationError('You need to be logged in!');
-        // },
-        // journals: async (parent, { email }) => {
-        //     const params = email ? { email } : {};
-        //     return Journal.find(params).sort({ createdAt: -1 });
-        // },
-        // journal: async (parent, { journalId }) => {
-        //     return Journal.findOne({ _id: journalId });
-        // },
-        // // /TODO
+        // Get user's journal documents
+        journal: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate( 'journals' );
+                
+                user.journals.sort({ _id: 'desc' });
+
+                return user;
+            }
+            throw new AuthenticationError('Please log in to see your Journal entries');
+        },
     },
     Mutation: {
         // Login user using email and password values provided from client (LoginForm)
@@ -66,61 +61,16 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        // INITIAL IMPLEMENTATION
-        // createJournal: async (parent, { journalText }, context) => {
-        //     if (context.user) {
-        //         const journal = await Journal.create({
-        //             journalText,
-        //             journalAuthor: context.user.email,
-        //         });
-        //         await User.findOneAndUpdate(
-        //             { _id: context.user._id },
-        //             { $addToSet: { journals: journal._id } }
-        //         );
-        //         return journal;
-        //     }
-        //     throw new AuthenticationError('You need to be logged in!');
-        // },
-        // CURRENT IMPLEMENTATION COMMENTED OUT BECAUSE I'VE DEEPLY OFFENDED THE TERMINAL
-        // // create a new Journal leveraging user context
-        // createJournal: async (parent, { journalData }, context) => {
-        //     if (context.user) {
-        //         const journal = new Journal({ journalData });
-        
-        //         await User.findByIdAndUpdate(context.user._id, { $push: { journals: journal } });
-        
-        //         return journal;
-        //     }
-        
-        //     throw new AuthenticationError('Not logged in');
-        // },
-        // Add a Provider to a user's providers
-        addProvider: async (parent, { providerData }, context ) =>{
+        createJournal: async (parent, { journalData }, context) => {
+            console.log(context);
             if (context.user) {
-                const updateProviders = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    // Add the provider to the end of the providers array using the push method
-                    { $push: { providers: providerData} },
-                    // return the modified User document that includes the new provider in the providers array
-                    { new: true }
-                );
-                return updateProviders;
+                const journal = new Journal({ journalData });
+    
+                await User.findByIdAndUpdate(context.user._id, { $push: { journals: journal }}, { new: true }  );
+    
+                return journal;
             }
-            throw new AuthenticationError('Unable to locate user');
-        },
-        // Add a Group to a user's groups
-        addGroup: async (parent, { groupData }, context ) =>{
-            if (context.user) {
-                const updateGroups = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    // Add the group to the end of the groups array using the push method
-                    { $push: { groups: groupData} },
-                    // return the modified Group document that includes the new group in the providers array
-                    { new: true }
-                );
-                return updateGroups;
-            }
-            throw new AuthenticationError('Unable to locate user');
+            throw new AuthenticationError('Please login to add Journals');
         },
     },
 };
