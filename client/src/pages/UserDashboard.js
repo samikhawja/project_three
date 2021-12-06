@@ -16,7 +16,7 @@ const UserDashboard = () => {
       {Array.from({ length: 4 }).map((_, idx) => (
         <Col>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img variant="top" src="./assets/images/2.png" />
             <Card.Body style={myStyle}>
               <Card.Title style={myStyle2}>Card title</Card.Title>
               <Card.Text>Dashboard stuff.</Card.Text>

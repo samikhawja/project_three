@@ -6,10 +6,7 @@ const myStyle = {
   backgroundColor: "#E3D9CA",
 };
 
-
-
 const JournalView = () => {
-
 
 const [showJournalModal, setShowJournalModal] = useState(false);
   return (
