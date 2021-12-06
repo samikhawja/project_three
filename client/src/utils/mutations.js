@@ -10,7 +10,7 @@ export const LOGIN = gql`
             _id
         }
     }
-    }
+}
 `;
 
 export const CREATE_USER = gql`
@@ -24,8 +24,19 @@ export const CREATE_USER = gql`
 }
 `;
 
+export const UPDATE_USER = gql`
+    mutation updateUser($fname: String, $lname: String, $email: String, $password: String) {
+    updateUser(fname: $fname, lname: $lname, email: $email, password: $password) {
+            token
+            user {
+                _id
+            }
+        }
+    }
+`;
+
 export const ADD_GROUP = gql`
-mutation addGroup($groupData: GroupInput!) {
+    mutation addGroup($groupData: GroupInput!) {
     addGroup(groupData: $groupData) {
         _id
         groups {
@@ -38,7 +49,7 @@ mutation addGroup($groupData: GroupInput!) {
 `;
 
 export const ADD_PROVIDER = gql`
-mutation addProvider($providerData: ProviderInput!) {
+    mutation addProvider($providerData: ProviderInput!) {
     addProvider(providerData: $providerData) {
         _id
         providers {

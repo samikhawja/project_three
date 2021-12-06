@@ -55,6 +55,8 @@ const typeDefs = gql`
         
         createUser(fname: String!, lname: String!, email: String!, password: String!): Auth
 
+        updateUser(fname: String, lname: String, email: String, password: String): User
+
         addProvider(providerData: ProviderInput!): User
 
         addGroup(groupData: GroupInput!): User
@@ -66,8 +68,6 @@ const typeDefs = gql`
 // journals(context.user._id: ID!): [Journal]
 
 //mutations
-// updateUser(email: String, password: String, fname: String, lname: String): Auth
-
 // createJournal(journalData: JournalInput!): Journal
 
 

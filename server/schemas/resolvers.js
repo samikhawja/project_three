@@ -59,12 +59,13 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        // updateUser: async (parent, args, context) => {
-        //     if (context.user) {
-        //         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-        //     }
-        //     throw new AuthenticationError('Not logged in');
-        // },
+        // Update existing user document corresponding to whatever field values provided by client
+        updateUser: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+            throw new AuthenticationError('Not logged in');
+        },
         // INITIAL IMPLEMENTATION
         // createJournal: async (parent, { journalText }, context) => {
         //     if (context.user) {

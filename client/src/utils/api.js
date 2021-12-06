@@ -28,6 +28,7 @@ export const loginUser = (userData) => {
     });
 };
 
+// create new User document
 export const createUser = (userData) => {
     return fetch('/api/users', {
         method: 'POST',
@@ -36,6 +37,17 @@ export const createUser = (userData) => {
         },
         
         body: JSON.stringify(userData),
+    });
+};
+
+// Update values of existing user document
+export const updateUser = (token) => {
+    return fetch('/api/users/user', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
     });
 };
 
