@@ -4,12 +4,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        users: async () => {
-            return User.find().populate('journals');
-        },
-        user: async (parent, { email }) => {
-            return User.findOne({ email }).populate('journals');
-        },
         journals: async (parent, { email }) => {
             const params = email ? { email } : {};
             return Journal.find(params).sort({ createdAt: -1 });
