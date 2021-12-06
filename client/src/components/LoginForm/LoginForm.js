@@ -69,8 +69,9 @@ const LoginForm = () => {
             <Form.Group className="mb-3" >
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
-                    type="email" 
-                    placeholder="john@gmail.com" 
+                    type='email' 
+                    name='email' 
+                    placeholder='john@gmail.com' 
                     onChange={ handleInputChange }
                     value={ formData.email }
                     required
@@ -80,8 +81,9 @@ const LoginForm = () => {
             <Form.Group className="mb-3" >
                 <Form.Label>Password</Form.Label>
                 <Form.Control 
-                    type="password" 
-                    placeholder="Password"
+                    type='password'
+                    name='password' 
+                    placeholder='Password'
                     onChange={ handleInputChange }
                     value={ formData.password }
                     required
@@ -98,6 +100,7 @@ const LoginForm = () => {
                 </Button>
             </div>
             <Alert 
+                className='mt-3 mb-2'
                 dismissible
                 onClose={ () => setShowAlert(false) } 
                 show={ showAlert }
