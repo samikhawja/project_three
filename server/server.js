@@ -20,7 +20,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(routes)
 
+if (process.env.NODE_ENV === 'production') {
+    console.log("production_mode")
+    app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
 app.get('*', (req, res) => {
+    console.log("Serving up HTML")
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 })
 

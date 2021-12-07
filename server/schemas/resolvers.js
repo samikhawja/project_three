@@ -58,7 +58,6 @@ const resolvers = {
             console.log(result.data)
             let data = JSON.stringify(result.data)
             return {result:data}
-            console.log(`${process.env.API_KEY}`)
         },
     },
     Mutation: {
