@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-//import { JournalView } from "../components/Journal/JournalView";
-//import { JournalForm } from "../components/Journal/JournalForm";
+import JournalView from "../components/Journal/JournalView";
+import JournalForm from "../components/Journal/JournalForm";
 
 const myStyle = {
   color: "#403F48",
@@ -13,11 +13,10 @@ function JournalContainer() {
     <Container style={myStyle}>
       <Row>
         <Col md={6}>
-          JournalView <Button variant="outline-success">See more</Button>{" "}
+          <JournalView></JournalView>
         </Col>
         <Col md={6}>
-          JournalForm
-          <Button variant="outline-success">Submit</Button>{" "}
+          <JournalForm></JournalForm>
         </Col>
       </Row>
     </Container>
