@@ -11,6 +11,7 @@ import "./../App.css";
 import React, { useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCH } from "../utils/queries";
+import { therapist } from "../utils/data"
 
 const myStyle = {
   color: "#403F48",
@@ -61,9 +62,9 @@ function TherapySearch() {
               >
                 <Form.Select aria-label="Floating label select example">
                   <option>Distance</option>
-                  <option value="1">miles</option>
-                  <option value="2">miles</option>
-                  <option value="3">miles</option>
+                  <option value="1">10 miles</option>
+                  <option value="2">20 miles</option>
+                  <option value="3">30 miles</option>
                 </Form.Select>
               </FloatingLabel>
             </Row>
@@ -71,18 +72,12 @@ function TherapySearch() {
             <Row>
               <Col>INSERT GOOGLE API RESPONSE HERE</Col>
               <ListGroup>
+              {therapist.map((therapy) =>(
                 <ListGroup.Item action href="#link1">
-                  therapist results
-                  <Button variant="success">Add Therapist</Button>{" "}
+                  {therapy.name}
+                  <Button href={therapy.phone}>{therapy.phone}</Button>{" "}
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link2">
-                  group results
-                  <Button variant="success">Add AA Support Group</Button>{" "}
-                </ListGroup.Item>
-                <ListGroup.Item action href="#link3">
-                  group results
-                  <Button variant="success">Add support Group</Button>{" "}
-                </ListGroup.Item>
+              ))}
               </ListGroup>
             </Row>
           </Form>
