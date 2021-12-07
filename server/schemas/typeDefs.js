@@ -42,7 +42,6 @@ const typeDefs = gql`
         title: String
         body: String
         sentiment: String
-        createdAt: String
     }
     type Auth {
         token: ID

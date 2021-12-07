@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
-require('dotenv').config();
-
 const myStyle = {
     color: "#6D757D",
 };
@@ -11,7 +9,7 @@ export default function Quote() {
     const [quote, setQuote] = useState({});
 
     useEffect(() => {
-    fetchRandomQuote();
+        fetchRandomQuote();
     }, []);
 
     async function fetchRandomQuote() {
@@ -25,12 +23,16 @@ export default function Quote() {
     return (
     <div className="text-center py-6 col-8 offset-2">
         <div className="py-4">
-            <h4>
-                {' '}{quote.content}{' '}
-            </h4>
-            <h5 style={myStyle}>
-                {quote.author}
-            </h5>
+            <div className="py-1">
+                <h4>
+                    {' '}{quote.content}{' '}
+                </h4>
+            </div>
+            <div className="py-1">
+                <h5 style={myStyle}>
+                    {quote.author}
+                </h5>
+            </div>
         </div>
     </div>
     );

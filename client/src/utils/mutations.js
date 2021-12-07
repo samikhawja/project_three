@@ -8,7 +8,6 @@ export const LOGIN = gql`
         token
         user {
             _id
-            createdAt
         }
     }
 }
@@ -20,7 +19,6 @@ export const CREATE_USER = gql`
             token
             user {
                 _id
-                createdAt
             }
         }
     }
