@@ -49,6 +49,7 @@ const typeDefs = gql`
         user: User
     }
     type Query {
+        searchTherapy: Search
         user: User
         journal: Journal  
     }
@@ -64,6 +65,9 @@ const typeDefs = gql`
         addProvider(providerData: ProviderInput!): User
 
         addGroup(groupData: GroupInput!): User
+    }
+    type Search {
+        result: String
     }
 `;
 

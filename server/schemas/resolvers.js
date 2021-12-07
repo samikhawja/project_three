@@ -26,6 +26,14 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in to see your Journal entries');
         },
+        searchTherapy: async (parent, args) => {
+            console.log("starting searchTherapy")
+            const result = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?types=doctor&name=aa_support_group&sensor=false&radius=5000&key=${process.env.API_KEY}`)
+            console.log(result.data)
+            let data = JSON.stringify(result.data)
+            return {result:data}
+            console.log(`${process.env.API_KEY}`)
+        },
     },
     Mutation: {
         // Login user using email and password values provided from client (LoginForm)
