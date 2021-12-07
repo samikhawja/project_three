@@ -50,6 +50,7 @@ const typeDefs = gql`
     type Query {
         user: User
         searchTherapy: Search
+        journal(_id: ID!): Journal
     }
     type Mutation {
         login(email: String!, password: String!): Auth
@@ -57,6 +58,8 @@ const typeDefs = gql`
         createUser(fname: String!, lname: String!, email: String!, password: String!): Auth
 
         updateUser(fname: String, lname: String, email: String, password: String): User
+
+        createJournal(journalData: JournalInput!): Journal
 
         addProvider(providerData: ProviderInput!): User
 
@@ -66,39 +69,5 @@ const typeDefs = gql`
         result: String
     }
 `;
-// queries
-// journal(_id: ID!): Journal
-
-// journals(context.user._id: ID!): [Journal]
-
-//mutations
-// createJournal(journalData: JournalInput!): Journal
-
-
-// type Query {
-//     categories: [Category]
-    
-//     products(category: ID, name: String): [Product]
-
-//     product(_id: ID!): Product
-
-//     user: User
-
-//     order(_id: ID!): Order
-
-//     checkout(products: [ID]!): Checkout
-//   }
-
-//   type Mutation {
-//     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    
-//     addOrder(products: [ID]!): Order
-    
-//     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    
-//     updateProduct(_id: ID!, quantity: Int!): Product
-    
-//     login(email: String!, password: String!): Auth
-//   }
 
 module.exports = typeDefs
