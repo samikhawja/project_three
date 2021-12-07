@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Card, Row, Col } from "react-bootstrap";
 //import 'animate.css';
 import JournalPhoto from "./../assets/images/2.png";
@@ -26,7 +27,7 @@ const UserDashboard = () => {
           <Card>
             <Card.Img variant="top" src={JournalPhoto} />
             <Card.Body style={myStyle}>
-              <Card.Title style={myStyle2}>LINK JOURNAL HERE</Card.Title>
+              <Card.Title style={myStyle2}>Write a Journal</Card.Title>
               <Card.Text>
                 Journaling is simply writing down your thoughts and feelings to
                 understand them more clearly. If you struggle with stress,
@@ -41,7 +42,7 @@ const UserDashboard = () => {
           <Card>
             <Card.Img variant="top" src={TherapyPhoto} />
             <Card.Body style={myStyle}>
-              <Card.Title style={myStyle2}>Therapy Page link</Card.Title>
+              <Card.Title style={myStyle2}>Talk it out</Card.Title>
               <Card.Text>
                 The overall goal of mental health therapy is to help you better
                 understand and manage how to overcome life's challenges. Whether
@@ -58,7 +59,7 @@ const UserDashboard = () => {
           <Card>
             <Card.Img variant="top" src={CalendarPhoto} />
             <Card.Body style={myStyle}>
-              <Card.Title style={myStyle2}>Calendar link</Card.Title>
+              <Card.Title style={myStyle2}>Schedule your time</Card.Title>
               <Card.Text>
                 Calendars help us cope with change, create healthy habits,
                 improve interpersonal relationships, and reduce stress. Studies
@@ -74,7 +75,7 @@ const UserDashboard = () => {
           <Card>
             <Card.Img variant="top" src={ResourcesPhoto} />
             <Card.Body style={myStyle}>
-              <Card.Title style={myStyle2}>Resources Link</Card.Title>
+              <Card.Title style={myStyle2}>Resources to help</Card.Title>
               <Card.Text>
                 These services often include counseling, therapy, medication
                 management, social work services, peer supports, and substance
