@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* force root to take up full viewport */
+#root {
+  background-color: #E3D9CA;
+  height:100vh;
+}
