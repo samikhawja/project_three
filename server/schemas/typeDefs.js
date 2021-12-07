@@ -9,6 +9,7 @@ const typeDefs = gql`
         providers: [Provider]
         groups: [Group]
         journals: [Journal]
+        createdAt: String
     }
     type Provider {
         place_id: String
@@ -48,9 +49,9 @@ const typeDefs = gql`
         user: User
     }
     type Query {
-        user: User
         searchTherapy: Search
-        journal(_id: ID!): Journal
+        user: User
+        journal: Journal  
     }
     type Mutation {
         login(email: String!, password: String!): Auth

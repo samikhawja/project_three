@@ -43,11 +43,22 @@ const resolvers = {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate( 'journals' );
                 
-                user.journals.sort({ _id: 'desc' });
+                // reverse order of array since db stores in createdAt ASC
+                user.journals.reverse();
+                // user.journals.sort({ _id: -1 });
+                // user.journals.sort({ field: _id, order: DESC });
 
                 return user;
             }
             throw new AuthenticationError('Please log in to see your Journal entries');
+        },
+        searchTherapy: async (parent, args) => {
+            console.log("starting searchTherapy")
+            const result = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?types=doctor&name=aa_support_group&sensor=false&radius=5000&key=${process.env.API_KEY}`)
+            console.log(result.data)
+            let data = JSON.stringify(result.data)
+            return {result:data}
+            console.log(`${process.env.API_KEY}`)
         },
     },
     Mutation: {

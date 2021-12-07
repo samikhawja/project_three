@@ -50,6 +50,19 @@ export const updateUser = (token) => {
     });
 };
 
+// add Journal data for a user 
+export const createJournal = (journalData, token) => {
+    return fetch('/api/users/journal', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+        },
+            body: JSON.stringify(journalData),
+    });
+};
+
+
 // add group data for a user (auth)
 export const addGroup = (groupData, token) => {
     return fetch('/api/users', {
@@ -74,6 +87,3 @@ export const addProvider = (providerData, token) => {
     });
 };
 
-// Todo:
-// updateUser
-// createJournal
