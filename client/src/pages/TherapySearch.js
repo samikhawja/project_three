@@ -8,10 +8,10 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import "./../App.css";
-import React, { useEffect } from "react";
-import { useLazyQuery } from "@apollo/client";
-import { SEARCH } from "../utils/queries";
+import React from "react";
+//import useFetch from "react-fetch-hook";
 
+// require('dotenv').config();
 const myStyle = {
   color: "#403F48",
   backgroundColor: "#E3D9CA",
@@ -20,24 +20,11 @@ const myStyle = {
   paddingBottom: "75px",
 };
 function TherapySearch() {
-  const [getSearch, {loading, error, data}] = useLazyQuery(SEARCH)
-  useEffect(() => {
-    if(data) {
-      try {const result = JSON.parse(data.searchTherapy.result)
-        console.log(result)
-        console.log("it's parsed")
-      }
-      catch (error){
-        console.log(data.searchTherapy.result)
-        console.error(error)
-      }
-    }
-  }, [data])
-  function beginSearch (){
-    getSearch()
-  }
-  if (error) return ("Error", error)
-  if (loading) return "Loading...";
+  // const { isLoading, error, data } = useFetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY%22)
+
+  // if (isLoading) return "Loading...";
+  // if (error) return "Error!";
+  // console.log(data.results);
 
   return (
     <Container style={myStyle}>
@@ -67,9 +54,8 @@ function TherapySearch() {
                 </Form.Select>
               </FloatingLabel>
             </Row>
-            <Button variant="success" onClick={beginSearch}>Submit</Button>{" "}
+            <Button variant="success">Submit</Button>{" "}
             <Row>
-<<<<<<< HEAD
               <Col>INSERT GOOGLE API RESPONSE HERE</Col>
               <ListGroup>
                 <ListGroup.Item action href="#link1">
@@ -85,9 +71,6 @@ function TherapySearch() {
                   <Button variant="success">Add support Group</Button>{" "}
                 </ListGroup.Item>
               </ListGroup>
-=======
-              <Col>Hello World</Col>
->>>>>>> e2b3ecb67963cc1c0ed70e9095bf8db243a631ca
             </Row>
           </Form>
         </div>
