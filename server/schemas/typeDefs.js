@@ -49,6 +49,7 @@ const typeDefs = gql`
     }
     type Query {
         user: User
+        searchTherapy: Search
     }
     type Mutation {
         login(email: String!, password: String!): Auth
@@ -60,6 +61,9 @@ const typeDefs = gql`
         addProvider(providerData: ProviderInput!): User
 
         addGroup(groupData: GroupInput!): User
+    }
+    type Search {
+        result: String
     }
 `;
 // queries

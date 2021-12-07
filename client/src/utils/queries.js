@@ -21,3 +21,11 @@ export const GET_USER = gql`
         }
     }
 `;
+
+export const SEARCH = gql`
+    query searchTherapy {
+        searchTherapy {
+            result
+        }
+    }
+`;
