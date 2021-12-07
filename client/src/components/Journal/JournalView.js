@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { ListGroup, Modal, Button } from "react-bootstrap";
+import { useState } from "react";
 
 //import entry title from user id
 const myStyle = {
@@ -8,19 +9,69 @@ const myStyle = {
 };
 
 const JournalView = () => {
+  const [showJournalModal, setShowJournalModal] = useState(false);
   return (
-    <Form style={myStyle}>
-      <Form.Group className="mb-3" controlId="entryTitle">
-        <Form.Label>Title</Form.Label>
-        <Form.Control type="entryTitle" placeholder="Todays Entry" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="entryContent">
-        <Form.Label>How are you feeling today?</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-      <Button variant="outline-success">Submit</Button>{" "}
-    </Form>
+    <>
+      <ListGroup>
+        <ListGroup.Item action href="#link1">
+          entryTitle1
+        </ListGroup.Item>
+        <ListGroup.Item action href="#link2">
+          entryTitle2
+        </ListGroup.Item>
+        <ListGroup.Item action href="#link3">
+          entryTitle
+        </ListGroup.Item>
+        <ListGroup.Item action href="#link4">
+          entryTitle
+        </ListGroup.Item>
+        <ListGroup.Item action href="#link5">
+          entryTitle
+        </ListGroup.Item>
+      </ListGroup>
+      <Button variant="primary" onClick={() => setShowJournalModal(true)}>
+        Launch vertically centered modal
+      </Button>
+      <Modal
+        show={showJournalModal}
+        onHide={() => setShowJournalModal(false)}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        style={myStyle}
+        id="journal-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            fname's Journal
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ListGroup>
+            <ListGroup.Item action href="#link1">
+              entryTitle1
+            </ListGroup.Item>
+            <ListGroup.Item action href="#link2">
+              entryTitle2
+            </ListGroup.Item>
+            <ListGroup.Item action href="#link3">
+              entryTitle
+            </ListGroup.Item>
+            <ListGroup.Item action href="#link4">
+              entryTitle
+            </ListGroup.Item>
+            <ListGroup.Item action href="#link5">
+              entryTitle
+            </ListGroup.Item>
+          </ListGroup>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setShowJournalModal(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
 export default JournalView;
+//REDO THIS FORM SOMETHING THREW IT OFF ENTRIELY
