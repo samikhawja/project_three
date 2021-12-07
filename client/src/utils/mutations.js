@@ -8,6 +8,7 @@ export const LOGIN = gql`
         token
         user {
             _id
+            createdAt
         }
     }
 }
@@ -15,13 +16,14 @@ export const LOGIN = gql`
 
 export const CREATE_USER = gql`
     mutation createUser($fname: String!, $lname: String!, $email: String!, $password: String!) {
-    createUser(fname: $fname, lname: $lname, email: $email, password: $password) {
-        token
-        user {
-            _id
+        createUser(fname: $fname, lname: $lname, email: $email, password: $password) {
+            token
+            user {
+                _id
+                createdAt
+            }
         }
     }
-}
 `;
 
 export const UPDATE_USER = gql`
@@ -30,7 +32,22 @@ export const UPDATE_USER = gql`
             token
             user {
                 _id
+                fname
+                lname
+                email
             }
+        }
+    }
+`;
+
+export const CREATE_JOURNAL = gql`
+    mutation createJournal($journalData: JournalInput!) {
+    createJournal(journalData: $journalData) {
+        _id
+        title
+        body
+        sentiment
+        createdAt
         }
     }
 `;

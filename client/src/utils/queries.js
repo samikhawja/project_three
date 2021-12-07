@@ -18,6 +18,20 @@ export const GET_USER = gql`
                 name
                 location                
             }
+            createdAt
+        }
+    }
+`;
+
+// export for use in component
+export const GET_JOURNALS = gql`
+    query journal {
+        journal {
+            _id
+            title
+            body
+            sentiment
+            createdAt
         }
     }
 `;
