@@ -14,7 +14,7 @@ router.get('/therapy', async (req, res) => {
 
 // router.get('/therapy', async (req, res) => {
 //     console.log("Therapy")
-//     const data = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?types=doctor&name=aa_support_group&sensor=false&radius=5000&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY`)
+//     const data = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?types=doctor&name=aa_support_group&sensor=false&radius=5000&key=${process.env.API_KEY}`)
 //     .then(response => {
 //       console.log(response.data);
 //     })
@@ -23,4 +23,4 @@ router.get('/therapy', async (req, res) => {
 //     })
 // })
 
-module.exports = router;
+module.exports = router; 
