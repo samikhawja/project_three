@@ -42,3 +42,11 @@ export const GET_JOURNALS = gql`
         }
     }
 `;
+
+export const SEARCH = gql`
+    query searchTherapy {
+        searchTherapy {
+            result
+        }
+    }
+`;

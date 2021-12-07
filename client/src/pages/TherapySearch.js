@@ -1,9 +1,16 @@
-import { Form, Row, Col, FloatingLabel, Container } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  FloatingLabel,
+  Container,
+  Button,
+} from "react-bootstrap";
 import "./../App.css";
-import React from "react";
-//import useFetch from "react-fetch-hook";
+import React, { useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { SEARCH } from "../utils/queries";
 
-// require('dotenv').config();
 const myStyle = {
   color: "#403F48",
   backgroundColor: "#E3D9CA",
@@ -11,11 +18,24 @@ const myStyle = {
   height: "100%",
 };
 function TherapySearch() {
-  // const { isLoading, error, data } = useFetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.759185,-122.427304&radius=40235&types=doctor&name=addiction_therapy&key=AIzaSyC23nfE1PhzLbG546fR0JtV9PrwJg8iyMY%22)
-
-  // if (isLoading) return "Loading...";
-  // if (error) return "Error!";
-  // console.log(data.results);
+  const [getSearch, {loading, error, data}] = useLazyQuery(SEARCH)
+  useEffect(() => {
+    if(data) {
+      try {const result = JSON.parse(data.searchTherapy.result)
+        console.log(result)
+        console.log("it's parsed")
+      }
+      catch (error){
+        console.log(data.searchTherapy.result)
+        console.error(error)
+      }
+    }
+  }, [data])
+  function beginSearch (){
+    getSearch()
+  }
+  if (error) return ("Error", error)
+  if (loading) return "Loading...";
 
   return (
     <Container style={myStyle}>
@@ -33,17 +53,18 @@ function TherapySearch() {
           <Form>
             <Row>
               <Col xs={7}>
-                <Form.Control placeholder="City" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
               <Col>
-                <Form.Control placeholder="State" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
               <Col>
-                <Form.Control placeholder="Zip" />
+                <Form.Control placeholder="Within (  )" />
               </Col>
             </Row>
+            <Button variant="success" onClick={beginSearch}>Submit</Button>{" "}
             <Row>
-              <Col>INSERT GOOGLE API RESPONSE HERE</Col>
+              <Col>Hello World</Col>
             </Row>
           </Form>
         </div>
@@ -58,3 +79,5 @@ export default TherapySearch;
 //city, state, zip?
 //container to load results
 //STYLE!
+//option values assigned
+//pre-converted options of distance

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path')
 //import Apolloserver class
 const { ApolloServer } = require('apollo-server-express');
+const routes = require('./routes');
 
 // Graphql schema bundle with definition and functions responsible for populating data in the schema
 const { typeDefs, resolvers } = require('./schemas');
@@ -17,10 +18,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }))
 // Return the incoming request objects as JSON objects
 app.use(express.json());
+app.use(routes)
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-})
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// })
 
 async function startApolloServer(typeDefs, resolvers) {
     // Initializing server
