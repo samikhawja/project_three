@@ -20,29 +20,29 @@ const MainNav = () => {
           Through the Woods
         </h1>
         <Nav className="px-3 mt-2 mx-2 fs-6" id="nav-pages">
-          <Nav.Link href="/" className="mx-4 h3">
+          <Nav.Link href="/" className="mx-3 h4">
             HOME
           </Nav.Link>
-          <Nav.Link href="/therapy" className="mx-4 h3">
+          <Nav.Link href="/therapy" className="mx-3 h4">
             THERAPY SEARCH
           </Nav.Link>
           {/* Authenticated user nav includes Dashboard and Logout options */}
           {Auth.loggedIn() ? (
             //Need to maintain single parent element or it all borks
             <>
-              <Nav.Link href="/dashboard" className="mx-4 h3">
+              <Nav.Link href="/dashboard" className="mx-3 h4">
                 DASHBOARD
               </Nav.Link>
-              <Nav.Link href="/journal" className="mx-4 h3">
+              <Nav.Link href="/journal" className="mx-3 h4">
                 JOURNAL
               </Nav.Link>
-              <Nav.Link className="mx-4 h3" onClick={Auth.logout}>
+              <Nav.Link className="mx-3 h4" onClick={Auth.logout}>
                 LOGOUT
               </Nav.Link>
             </>
           ) : (
             <Nav.Link
-              className="mx-4 h3"
+              className="mx-3 h4"
               onClick={() => setShowLoginModal(true)}
             >
               LOGIN
