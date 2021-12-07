@@ -2,6 +2,8 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Journal } = require('../models');
 
 const { signToken } = require('../utils/auth');
+const axios = require('axios');
+require('dotenv').config();
 
 const resolvers = {
     Query: {
@@ -12,6 +14,30 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in to see your Providers & Groups.');
         },
+        searchTherapy: async (parent, args) => {
+            console.log("starting searchTherapy")
+            const result = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?types=doctor&name=aa_support_group&sensor=false&radius=5000&key=${process.env.API_KEY}`)
+            console.log(result.data)
+            let data = JSON.stringify(result.data)
+            return {result:data}
+            console.log(`${process.env.API_KEY}`)
+        },
+        // CURRENT IMPLEMENTATION COMMENTED OUT BECAUSE I'VE DEEPLY OFFENDED THE TERMINAL
+        // // TODO:
+        // user: async (parent, args, context) => {
+        //     if (context.user) {
+        //         return User.findOne({ _id: context.user._id }).populate('journals');
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        // journals: async (parent, { email }) => {
+        //     const params = email ? { email } : {};
+        //     return Journal.find(params).sort({ createdAt: -1 });
+        // },
+        // journal: async (parent, { journalId }) => {
+        //     return Journal.findOne({ _id: journalId });
+        // },
+        // // /TODO
         // Get user's journal documents
         journal: async (parent, args, context) => {
             if (context.user) {

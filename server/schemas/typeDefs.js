@@ -49,6 +49,7 @@ const typeDefs = gql`
     }
     type Query {
         user: User
+        searchTherapy: Search
         journal(_id: ID!): Journal
     }
     type Mutation {
@@ -63,6 +64,9 @@ const typeDefs = gql`
         addProvider(providerData: ProviderInput!): User
 
         addGroup(groupData: GroupInput!): User
+    }
+    type Search {
+        result: String
     }
 `;
 
