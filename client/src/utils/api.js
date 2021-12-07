@@ -79,11 +79,3 @@ export const addProvider = (providerData, token) => {
     body: JSON.stringify(providerData),
   });
 };
-
-// Todo:
-// updateUser
-// createJournal
-
-// export const addJournal = ( ??? ) => {
-//     return fetch('/')
-// }
