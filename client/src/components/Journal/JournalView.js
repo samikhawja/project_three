@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, ListGroup, Modal, Tab, Col} from 'react-bootstrap';
+import { Table, ListGroup, Modal, Tab, Col } from 'react-bootstrap';
+
 //import entry title from user id
 const myStyle = {
   color: "#403F48",
@@ -10,15 +11,14 @@ const JournalView = () => {
 
 const [showJournalModal, setShowJournalModal] = useState(false);
   return (
-    <div style={myStyle}>
-      <Table responsive>
+{/* <Table responsive>
       <Col sm={4}>
           <ListGroup>
             <ListGroup.Item action href="#link1">
               entryTitle1
             </ListGroup.Item>
             <ListGroup.Item action href="#link2">
-              entryTitle2
+              entryTitle2      
             </ListGroup.Item>
             <ListGroup>
             <ListGroup.Item action href="#link3">
@@ -33,8 +33,8 @@ const [showJournalModal, setShowJournalModal] = useState(false);
               entryTitle
             </ListGroup.Item>
           </ListGroup>
-        </Col>
-        </Table>  
+      </Col>
+        </Table>
 <Modal
 show={showJournalModal}
 onHide={() => setShowJournalModal(false)}
@@ -78,48 +78,7 @@ onHide={() => setShowJournalModal(false)}
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col sm={8}>
-          <Tab.Content>
-            <Tab.Pane eventKey="#link1">
-              <h4> entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link2">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link3">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link4">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link5">
-              <h4>entryDate</h4>
-              {/* Render the relevent for based on with tab is active */}
-              <p>entryContent</p>
-            </Tab.Pane>
-          </Tab.Content>
-        </Col>
-      </Row>
-    </Tab.Container>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button onClick={() => setShowLoginModal(false)}>Close</Button>
-  </Modal.Footer>
-</Modal>
-</>
+
 );
-};
 
 export default JournalView;
-
-// Alix's Notes
-// Table with 3 entries
-// title is link to entry modal?
