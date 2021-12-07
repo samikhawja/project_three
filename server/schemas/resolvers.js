@@ -17,7 +17,10 @@ const resolvers = {
             if (context.user) {
                 const user = await User.findById(context.user._id).populate( 'journals' );
                 
-                user.journals.sort({ _id: 'desc' });
+                // reverse order of array since db stores in createdAt ASC
+                user.journals.reverse();
+                // user.journals.sort({ _id: -1 });
+                // user.journals.sort({ field: _id, order: DESC });
 
                 return user;
             }
